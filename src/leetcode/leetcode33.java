@@ -13,6 +13,7 @@ package leetcode;
 
  每次可以切掉一半数据,时间复杂度O(logn) 空间O(1)
 
+
  */
 public class leetcode33 {
     public int search(int[] nums, int target){
