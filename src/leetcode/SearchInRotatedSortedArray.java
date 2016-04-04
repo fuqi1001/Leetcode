@@ -15,7 +15,7 @@ package leetcode;
 
 
  */
-public class leetcode33 {
+public class SearchInRotatedSortedArray {
     public int search(int[] nums, int target){
         int len = nums.length;
         int left = 0;
