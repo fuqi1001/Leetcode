@@ -11,7 +11,7 @@ import java.util.Arrays;
  即便要求去重，使用之前说过的两个方法：HashSet和挪动指针法，也可以很容易就去重了。
  这里要注意，判断closest的方法是采取target-sum的绝对值与min相比，很容易理解，无论这个closest是在target左还是右，离target最近的就是最closest的。
  */
-public class leetcode16 {
+public class threeSumClosest {
     public int threeSumClosest(int[] nums, int target){
         Arrays.sort(nums);
         int diff = Integer.MAX_VALUE;
