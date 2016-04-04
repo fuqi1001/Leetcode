@@ -5,7 +5,7 @@ package leetcode;
  */
 import java.util.*;
 
-public class leetcode40 {
+public class combinationSum2 {
     public class ListNode {
         int val;
         ListNode next;
