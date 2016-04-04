@@ -15,7 +15,7 @@ package leetcode;
  就会出现每次移动一步的情况总共n步
  O(n);
  */
-public class leetcode81 {
+public class SearchInRotatedSortedArray2 {
     //version 1: iterative -> compare nums[left] and nums[mid] to narrow the range
 
     public boolean search(int[] nums, int target){
