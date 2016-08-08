@@ -16,4 +16,20 @@ public class ReverseString {
         }
         return new String(newStr);
     }
+
+    public String reverseString(String s) {
+        char[] str = s.toCharArray();
+        int len = s.length()-1;
+        int start = 0;
+        int end = len;
+
+        while(start < end){
+            char temp = str[start];
+            str[start] = str[end];
+            str[end] = temp;
+            start++;
+            end--;
+        }
+        return new String(str);
+    }
 }
