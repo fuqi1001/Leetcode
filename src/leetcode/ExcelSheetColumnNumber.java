@@ -12,7 +12,7 @@ public class ExcelSheetColumnNumber {
         }
         int result = 0;
         for(int i = 0 ; i < len ;i++){
-            result += Math.pow(26,len-1) * (ctr[i]-'A');
+            result += Math.pow(26,len-1-i)*((ctr[i]-'A')+1);
         }
         return result;
     }
