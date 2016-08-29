@@ -23,4 +23,22 @@ public class MajorityElement {
         }
         return -1;
     }
+
+    public int majorityElement(int[] nums) {
+        int candidate = 0;
+        int count = 0 ;
+        for(int ele : nums){
+            if(count == 0) {
+                candidate = ele;
+                count = 1;
+            }
+            else if (ele == candidate){
+                count++;
+            }
+            else if (ele != candidate){
+                count--;
+            }
+        }
+        return candidate;
+    }
 }
