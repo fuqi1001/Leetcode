@@ -40,5 +40,5 @@ public class MajorityElement {
             }
         }
         return candidate;
-    }
+    }//http://bookshadow.com/weblog/2014/12/22/leetcode-majority-element/
 }
