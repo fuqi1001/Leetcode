@@ -24,6 +24,7 @@ public class TwoSum {
     }
 
     //https://github.com/BruceZu/sawdust/blob/master/dataStructuresAndAlgorithms/src/main/java/array/Leetcode1twoSum.java
+    //unclear
     public int[] twoSum(int[] nums, int target){
         int max = nums[0];
         int min = nums[0];
