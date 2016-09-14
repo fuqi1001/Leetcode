@@ -9,6 +9,7 @@ import java.util.Queue;
  * Created by qifu on 16/9/13.
  */
 public class BinaryTreeLevelOrderTraversal {
+    ///dfs
     public List<List<Integer>> levelOrder(TreeNode root) {
 
 
@@ -28,7 +29,7 @@ public class BinaryTreeLevelOrderTraversal {
         helper(result,root.right,height+1);
     }
 
-
+    ///bfs
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result  = new ArrayList<>();
 
