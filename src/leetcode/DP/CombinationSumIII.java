@@ -12,18 +12,15 @@ public class CombinationSumIII {
         List<Integer> list = new ArrayList<>();
         helper(k,n,1,list,result);
         return result;
-
     }
 
-    public void helper(int k,int n, int num, List<Integer> list,List<List<Integer>> result){
-        if(n < 0) return ;
-        else if(n == 0 && list.size() == k) result.add(new ArrayList<>(list));
-        else{
-            for(int i = num ; i <= 9 ;i++){
-                list.add(i);
-                helper(k,n-i,i+1,list,result);
-                list.remove(list.size() - 1);
-            }
+    public void helper(int k, int n, int num,List<Integer> list,List<List<Integer>> result){
+        if(n < 0 || list.size() > k) return;
+        if( n == 0 && list.size() == k) result.add(new ArrayList<>(list));
+        for(int i = num; i <= 9 ; i++){
+            list.add(i);
+            helper(k,n - i,i+1,list,result);
+            list.remove(list.size() - 1);
         }
 
     }
