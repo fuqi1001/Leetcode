@@ -1,4 +1,4 @@
-package leetcode.DP;
+package leetcode.DPandBackTracking;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package leetcode.DP;
+package leetcode.DPandBackTracking;
 
 /**
  * Created by qifu on 16/10/17.
