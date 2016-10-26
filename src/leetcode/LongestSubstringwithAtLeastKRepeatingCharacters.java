@@ -27,4 +27,6 @@ public class LongestSubstringwithAtLeastKRepeatingCharacters {
         }
         return res;
     }
+
+    //http://www.cnblogs.com/grandyang/p/5852352.html
 }
