@@ -19,7 +19,7 @@ public class PerfectSquares {
         }
         return dp[n];
     }
-
+    //math
     public int numSquares(int n) {
         while (n % 4 == 0)
             n /= 4;
