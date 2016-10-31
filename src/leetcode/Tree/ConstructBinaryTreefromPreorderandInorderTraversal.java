@@ -3,6 +3,7 @@ import java.util.HashMap;
 /**
  * Created by qifu on 16/10/30.
  */
+//https://siddontang.gitbooks.io/leetcode-solution/content/tree/construct_binary_tree.html
 public class ConstructBinaryTreefromPreorderandInorderTraversal {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         public TreeNode buildTree(int[] preorder, int[] inorder) {
