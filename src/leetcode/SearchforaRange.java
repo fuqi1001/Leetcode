@@ -62,24 +62,25 @@ public class SearchforaRange {
 
 
     public int[] searchRange(int[] nums, int target) {
-        int i = 0;
-        int j = nums.length-1;
-        int mid = i + (j-i) / 2;
+        if(nums.length == 0 || nums == null) return new int[]{-1,-1};
 
-        while(i < j) {
-            if(nums[mid] < target) i = mid+1;
-            else if(nums[mid] > target) j = mid-1;
-            else {
-                i = mid;
-                j = mid;
-                while(i-1 >= 0 && nums[i-1] == target) i--;
-                while(j+1 <= nums.length-1 && nums[j+1] == target) j++;
+        int left = 0;
+        int right = nums.length - 1;
+        int mid = (left+right) / 2;
+        while(left < right){
+            if(nums[mid] < target) left = mid + 1;
+            else if(nums[mid] > target) right = mid - 1;
+
+            else{
+                left = mid;
+                right = mid;
+                while(left - 1 >=0 && nums[left - 1] == target) left--;
+                while(right +1 <= nums.length - 1&& nums[right + 1] == target) right++;
                 break;
             }
-
-            mid = i + (j-i) / 2;
+            mid = (left+right) / 2;
         }
-        if(nums[i] != target || nums[j] != target) return new int[]{-1, -1};
-        else return new int[]{i, j};
+        if(nums[left] != target || nums[right] != target ) return new int[]{-1,-1};
+        else return new int[]{left,right};
     }
 }
