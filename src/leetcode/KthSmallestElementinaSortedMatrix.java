@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * Created by qifu on 16/10/10.
@@ -51,5 +52,34 @@ public class KthSmallestElementinaSortedMatrix {
             else i--;
         }
         return cnt;
+    }
+
+    //////=========================
+
+    class Tuple implements Comparable<Tuple> {
+        int x, y, val;
+        public Tuple(int x,int y, int val){
+            this.x = x;
+            this.y = y;
+            this.val = val;
+        }
+
+        public int compareTo(Tuple that){
+            return this.val - that.val;
+        }
+    }
+
+
+    public int kthSmallest(int[][] matrix, int k){
+        int n = matrix.length;
+        PriorityQueue<Tuple> pq =  new PriorityQueue<>();
+        for(int i = 0 ; i < matrix.length;i++) pq.offer(new Tuple(0,i,matrix[0][i]));
+        for(int i = 0 ; i < k - 1; i++){
+            Tuple temp = pq.poll();
+            if(temp.x == matrix.length - 1) continue;
+            pq.offer(new Tuple(temp.x + 1, temp.y, matrix[temp.x + 1][temp.y]));
+        }
+
+        return pq.poll().val;
     }
 }
