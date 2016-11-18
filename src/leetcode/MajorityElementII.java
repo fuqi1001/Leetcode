@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -51,6 +52,55 @@ public class MajorityElementII {
         }
 
         return result;
-
     }
+
+    //////================   n / k
+
+    public List<Integer> majorityElement(int[] nums) {
+        int n = nums.length , k = 3;
+        List<Integer> result = new ArrayList<>();
+        if(n == 0 || k < 2) return result;
+
+        int[] candidates = new int[k - 1];
+        int[] count = new int[k - 1];
+
+        for(int num: nums){
+            boolean settled = false;
+            for(int i = 0 ; i < k - 1; i++){
+                if(candidates[i] == num){
+                    count[i]++;
+                    settled = true;
+                    break;
+                }
+            }
+            if(settled) continue;
+            for(int i = 0 ;  i < k - 1; i++){
+                if(count[i] == 0){
+                    count[i] = 1;
+                    candidates[i] = num;
+                    settled = true;
+                    break;
+                }
+            }
+            if(settled) continue;
+            for(int i = 0 ; i < k - 1; i++){
+                count[i] = (count[i] > 0) ? (count[i] - 1) : 0;
+            }
+        }
+
+        Arrays.fill(count,0);
+        for(int num : nums){
+            for(int i = 0 ; i < k - 1; i++){
+                if(candidates[i] == num){
+                    count[i]++;
+                    break;
+                }
+            }
+        }
+        for(int i = 0 ; i < k - 1; i++){
+            if(count[i] > n / k) result.add(candidates[i]);
+        }
+        return result;
+    }
+
 }
