@@ -57,4 +57,9 @@ public class CountCompleteTreeNodes {
         }
         return result;
     }
+
+    //Unlike many of the recursive solutions my solution is to iteratively count the the number of nodes in the partially full layer (last layer if exsiting).
+    //It first compute the depth of the right most leave of the whole tree which is the depth of a complete tree. Then it compute the depth of right most leave of the left subtree.
+    //If they don't equal to each other, the left subtree is complete tree, we add the number of nodes of the last layer of left subtree and move to right subtree.
+    //Otherwise we know the right is complete tree and move to the leftsubtree. Repeat the process till the node is null.
 }
