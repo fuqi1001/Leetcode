@@ -22,4 +22,15 @@ public class NumberofSegmentsinaString {
         if(chars > 0) seg++;
         return seg;
     }
+
+
+    public int countSegments(String s) {
+        s = "x " + s;
+        String[] res = s.split(" +");
+        return res.length - 1;
+    }
+
+    /*
+    \\s表示   空格,回车,换行等空白符,
+    +号表示一个或多个的意思,所以...*/
 }
