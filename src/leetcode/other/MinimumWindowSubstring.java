@@ -20,7 +20,7 @@ public class MinimumWindowSubstring {
             while(counter == 0){
                 if(right - left < d) {
                     d = right - left;
-                    head = right;
+                    head = left;
                 }
 
                 if(hash[s.charAt(left++)]++ == 0) counter++;
