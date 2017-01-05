@@ -4,7 +4,7 @@ package leetcode.other;
  * Created by qifu on 17/1/5.
  */
 public class ThirdMaximumNumber {
-    //414
+    //4144
     public int thirdMax(int[] nums){
         int max, mid, small;
 
