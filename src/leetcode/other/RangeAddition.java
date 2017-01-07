@@ -4,6 +4,7 @@ package leetcode.other;
  * Created by qifu on 17/1/7.
  */
 public class RangeAddition {
+    //
     public int[] getModifiedArray(int length, int[][] updates){
         int[] res = new int[length];
 
