@@ -41,11 +41,12 @@ public class DeleteNodeinaBST {
         }
 
         next.left = root.left;
-        if(root.right != next){
+        /*if(root.right != next){
             pre.left = next.right;
             next.right = root.right;
-        }
-        return next;
+        }*/
+
+        return root.right;
     }
 
     public TreeNode deleteNode(TreeNode root, int key) {
