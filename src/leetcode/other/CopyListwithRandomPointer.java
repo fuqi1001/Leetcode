@@ -41,10 +41,12 @@ public class CopyListwithRandomPointer {
         while(cur != null){
             next = cur.next.next;
 
+             /* Extract the copy list. */
             copy = cur.next;
             copy_cur.next = copy;
             copy_cur = copy;
 
+            // restore the original list
             cur.next = next;
             cur = next;
         }
