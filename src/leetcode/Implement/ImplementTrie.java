@@ -60,3 +60,75 @@ public class Trie {
  * boolean param_2 = obj.search(word);
  * boolean param_3 = obj.startsWith(prefix);
  */
+/// hash
+class TrieNode {
+    char c;
+    HashMap<Character, TrieNode> children = new HashMap<Character, TrieNode>();
+    boolean isWord;
+    public TrieNode(){};
+    public TrieNode(char c){
+        this.c = c;
+    }
+}
+
+public class Trie {
+    private TrieNode root;
+
+    /** Initialize your data structure here. */
+    public Trie() {
+        root = new TrieNode();
+    }
+
+    /** Inserts a word into the trie. */
+    public void insert(String word) {
+        TrieNode cur = root;
+        HashMap<Character, TrieNode> curChildren = root.children;
+        for(int i = 0; i < word.length(); i++){
+            char c = word.charAt(i);
+            if(curChildren.containsKey(c)){
+                cur = curChildren.get(c);
+            } else {
+                TrieNode newNode = new TrieNode(c);
+                curChildren.put(c, newNode);
+                cur = newNode;
+            }
+
+            curChildren = cur.children;
+            if(i == word.length()-1){
+                cur.isWord = true;
+            }
+        }
+    }
+
+    /** Returns if the word is in the trie. */
+    public boolean search(String word) {
+        if(searchHelper(word) == null) return false;
+        else if(searchHelper(word).isWord){
+            return true;
+
+        }
+        else
+            return false;
+    }
+
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    public boolean startsWith(String prefix) {
+        if(searchHelper(prefix) == null) return false;
+        else return true;
+    }
+
+    private TrieNode searchHelper(String s){
+        HashMap<Character, TrieNode> children = root.children;
+        TrieNode cur = null;
+        for(int i = 0 ;i < s.length(); i++){
+            char c = s.charAt(i);
+            if(children.containsKey(c)){
+                cur = children.get(c);
+                children = cur.children;
+            } else {
+                return null;
+            }
+        }
+        return cur;
+    }
+}
