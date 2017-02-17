@@ -7,32 +7,33 @@ import java.util.Stack;
  */
 public class AddTwoNumbersII {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2){
-        Stack<Integer> s1 = new Stack<>();
-        Stack<Integer> s2 = new Stack<>();
+        Stack<ListNode> stack1 = new Stack<>();
+        Stack<ListNode> stack2 = new Stack<>();
 
         while(l1 != null){
-            s1.push(l1.val);
+            stack1.push(l1);
             l1 = l1.next;
         }
-
         while(l2 != null){
-            s2.push(l2.val);
+            stack2.push(l2);
             l2 = l2.next;
         }
-
         int sum = 0;
         ListNode cur = new ListNode(0);
 
-        while(!s1.isEmpty() || !s2.isEmpty()){
-            if(!s1.isEmpty()) sum += s1.pop();
-            if(!s2.isEmpty()) sum += s2.pop();
-
+        while((!stack1.isEmpty()) || (!stack2.isEmpty())){
+            if(!stack1.isEmpty()){
+                sum += stack1.pop().val;
+            }
+            if(!stack2.isEmpty()){
+                sum += stack2.pop().val;
+            }
+            System.out.println(sum);
             cur.val = sum % 10;
-            ListNode head = new ListNode(sum / 10);
+            sum /= 10;
+            ListNode head = new ListNode(sum);
             head.next = cur;
             cur = head;
         }
-
         return cur.val == 0 ? cur.next : cur;
-    }
 }
