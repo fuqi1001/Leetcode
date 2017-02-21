@@ -7,33 +7,37 @@ import java.util.Queue;
  * Created by qifu on 16/9/16.
  */
 public class ImplementStackusingQueues {
-    class MyStack {
-        // Push element x onto stack.
+    Queue queue;
 
-        private Queue queue;
+    /** Initialize your data structure here. */
+    public MyStack() {
 
-        public void push(int x) {
-            Queue q = new LinkedList();     // could be any queue type, see note above
-            q.add(x);
-            q.add(queue);
-            queue = q;
-        }
+        queue = new LinkedList<>();
+    }
 
-        // Removes the element on top of the stack.
-        public void pop() {
-            queue.remove();
-            queue = (Queue) queue.peek();
-        }
+    /** Push element x onto stack. */
+    public void push(int x) {
+        Queue q = new LinkedList<>();
+        q.add(x);
+        q.add(queue);
+        queue = q;
+    }
 
-        // Get the top element.
-        public int top() {
-            return (int) queue.peek();
-        }
+    /** Removes the element on top of the stack and returns that element. */
+    public int pop() {
+        int cur = (int)queue.poll();
+        queue = (Queue) queue.peek();
+        return cur;
+    }
 
-        // Return whether the stack is empty.
-        public boolean empty() {
-            return queue == null;
-        }
+    /** Get the top element. */
+    public int top() {
+        return (int)queue.peek();
+    }
+
+    /** Returns whether the stack is empty. */
+    public boolean empty() {
+        return queue.isEmpty();
     }
 
 }
