@@ -83,4 +83,27 @@ public class LongestPalindromicSubstring {
         re[1] = right - 1;
         return re;
     }
+
+
+    ///
+    int lo, maxLen;
+
+    public String longestPalindrome(String s) {
+        if(s.length() <= 1) return s;
+        for(int i = 0; i < s.length(); i++){
+            extendPalindrome(s, i, i);
+            extendPalindrome(s, i, i+1);
+        }
+        return s.substring(lo, lo + maxLen);
+    }
+    public void extendPalindrome(String s, int start, int end){
+        while(start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)){
+            start--;
+            end++;
+        }
+        if(maxLen < end - start - 1){
+            lo = start + 1;
+            maxLen = end - start - 1;
+        }
+    }
 }
