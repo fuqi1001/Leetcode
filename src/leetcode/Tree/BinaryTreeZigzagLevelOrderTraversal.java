@@ -50,4 +50,29 @@ public class BinaryTreeZigzagLevelOrderTraversal {
         }
         return res;
     }
+
+
+    ///
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if(root == null) return res;
+
+        helper(root, res, 0);
+        return res;
+    }
+    public void helper(TreeNode node, List<List<Integer>> res, int level){
+        if(node == null) return;
+
+        if(res.size() <= level){
+            List<Integer> list = new ArrayList<>();
+            res.add(list);
+        }
+        if(level % 2 == 0) {
+            res.get(level).add(node.val);
+        } else {
+            res.get(level).add(0, node.val);
+        }
+        helper(node.left, res, level+1);
+        helper(node.right, res, level+1);
+    }
 }
