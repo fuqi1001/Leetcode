@@ -3,7 +3,7 @@ package leetcode.other;
 /**
  * Created by qifu on 16/9/22.
  */
-public class StringtoInteger {
+public classStringtoInteger {
 
     public int myAtoi(String str) {
         //empty
