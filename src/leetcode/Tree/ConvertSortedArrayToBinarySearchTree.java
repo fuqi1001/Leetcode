@@ -21,4 +21,10 @@ public class ConvertSortedArrayToBinarySearchTree {
         root.right = helper(nums,mid+1,end);
         return root;
     }
+
+    /*
+    * root is [mid];
+    * left is [0, mid - 1]
+    * right is [mid + 1, nums.length - 1]
+    * */
 }
