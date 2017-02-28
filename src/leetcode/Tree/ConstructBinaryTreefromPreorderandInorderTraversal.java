@@ -5,7 +5,7 @@ import java.util.HashMap;
  */
 //https://siddontang.gitbooks.io/leetcode-solution/content/tree/construct_binary_tree.html
 public class ConstructBinaryTreefromPreorderandInorderTraversal {
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
+
         public TreeNode buildTree(int[] preorder, int[] inorder) {
             if(preorder == null || preorder == null || preorder.length != inorder.length) return null;
 
@@ -25,10 +25,15 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
             TreeNode leftChild = helper(inorder,istart, pos - 1, preorder, pstart+1,pstart+pos-istart,map);
             TreeNode rightChild = helper(inorder,pos+1,inend,preorder, pos - inend + pend + 1,pend,map);
 
+            /*
+            right child len =>  inend - (pos + 1)
+            start from preorder => pend - (inend - (pos + 1)) = pend - inend + pos + 1
+
+            */
             root.left = leftChild;
             root.right = rightChild;
 
             return root;
         }
-    }
+
 }
