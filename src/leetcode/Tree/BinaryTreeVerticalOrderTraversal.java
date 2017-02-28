@@ -48,4 +48,37 @@ public class BinaryTreeVerticalOrderTraversal {
         }
         return res;
     }
+
+
+    /// 201 / 212
+    int min = 0;
+    int max = 0;
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        List<List<Integer>> res = new ArrayList<>();
+        if(root == null) return res;
+        setMap(map, root, 0);
+        for(int i = min ; i <= max; i++) {
+            res.add(map.get(i));
+        }
+        return res;
+    }
+    public void setMap(Map<Integer, List<Integer>> map, TreeNode root, int num) {
+        if(root == null) return;
+        min = Math.min(num, min);
+        max = Math.max(num, max);
+        if(!map.containsKey(num)){
+            map.put(num, new ArrayList<>());
+            map.get(num).add(root.val);
+        } else {
+            map.get(num).add(root.val);
+        }
+
+        if(root.left != null){
+            setMap(map, root.left, num - 1);
+        }
+        if(root.right != null) {
+            setMap(map, root.right, num + 1);
+        }
+    }
 }
