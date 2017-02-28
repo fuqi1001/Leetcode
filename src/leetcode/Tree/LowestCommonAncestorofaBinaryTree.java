@@ -45,4 +45,13 @@ public class LowestCommonAncestorofaBinaryTree {
         if(left != null && right != null) return root;
         return left == null ? right : left;
     }
+
+    /*
+    *
+    * 如果当前节点为空或者与目标节点之一相同，则返回当前节点
+
+        递归寻找p和q在左右子树中的位置
+
+        如果p和q分别位于root的左右两侧，则root为它们的LCA，否则为左子树或者右子树
+    * */
 }
