@@ -1,5 +1,7 @@
 package leetcode.Tree;
 
+import java.util.Arrays;
+
 /**
  * Created by qifu on 16/11/19.
  */
@@ -62,4 +64,27 @@ public class CountCompleteTreeNodes {
     //It first compute the depth of the right most leave of the whole tree which is the depth of a complete tree. Then it compute the depth of right most leave of the left subtree.
     //If they don't equal to each other, the left subtree is complete tree, we add the number of nodes of the last layer of left subtree and move to right subtree.
     //Otherwise we know the right is complete tree and move to the leftsubtree. Repeat the process till the node is null.
+
+
+
+    //
+
+    public int height(TreeNode root){
+        return root == null ? 0 : 1 + height(root.left);
+    }
+    public static int countNodes(TreeNode root) {
+        int h = height(root);
+        int count = 0;
+        while(root != null){
+            if(height(root.right) == h - 1) {       //左右同高,满二叉树
+                count += 1 << h - 1;
+                root = root.right;
+            } else {                                //完全二叉树,最左边还有额外点,先统计右边
+                count += 1 << (h - 2);
+                root = root.left;                   //右边统计共h-1层满的, 最后统计左子树多出来的部分
+            }
+            h--;
+        }
+        return count;
+    }
 }
