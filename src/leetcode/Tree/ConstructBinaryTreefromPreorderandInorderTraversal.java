@@ -1,5 +1,7 @@
 package leetcode.Tree;
 import java.util.HashMap;
+import java.util.Stack;
+
 /**
  * Created by qifu on 16/10/30.
  */
@@ -43,5 +45,33 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
 
             return root;
         }
+
+
+    ///
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if(preorder.length == 0 || inorder.length == 0) return null;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode root = new TreeNode(preorder[0]);
+        TreeNode cur = root;
+        for(int i = 1, j = 0; i < preorder.length; i++){
+            if(cur.val != inorder[j]){
+                cur.left = new TreeNode(preorder[i]);
+                stack.push(cur);
+                cur = cur.left;
+            } else {
+                j++;
+                while(!stack.isEmpty() && stack.peek().val == inorder[j]){
+                    j++;
+                    cur = stack.pop();
+                }
+                cur.right = new TreeNode(preorder[i]);
+                cur = cur.right;
+            }
+        }
+        return root;
+    }
+
+
+
 
 }
