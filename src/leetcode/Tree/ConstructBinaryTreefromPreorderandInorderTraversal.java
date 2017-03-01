@@ -24,7 +24,15 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
 
             TreeNode leftChild = helper(inorder,istart, pos - 1, preorder, pstart+1,pstart+pos-istart,map);
             TreeNode rightChild = helper(inorder,pos+1,inend,preorder, pos - inend + pend + 1,pend,map);
+            /*
+            *
+            * TreeNode left = helper(inorder, in_start, pos - 1, preorder, p_start + 1, p_start + (pos-in_start), map);
+            TreeNode right = helper(inorder, pos + 1, in_end, preorder, p_start + (pos-in_start) + 1, p_end, map);
+            *
+            *
+            * /
 
+             */
             /*
             right child len =>  inend - (pos + 1)
             start from preorder => pend - (inend - (pos + 1)) = pend - inend + pos + 1
