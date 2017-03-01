@@ -52,7 +52,7 @@ public class BinaryTreeRightSideView {
     public void helper(List<List<TreeNode>> result,TreeNode root, int height){
         if(root == null) return ;
         if(height >= result.size()){
-            result.add(result.add(new ArrayList<TreeNode>()););
+            result.add(new ArrayList<TreeNode>());
         }
         result.get(height).add(root);
         if(root.left != null) helper(result,root.left,height+1);
