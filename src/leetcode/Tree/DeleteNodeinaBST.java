@@ -34,17 +34,11 @@ public class DeleteNodeinaBST {
         if(root.right == null) return root.left;
 
         TreeNode next = root.right;
-        TreeNode pre = null;
         while(next.left != null){
-            pre = next;
             next = next.left;
         }
 
         next.left = root.left;
-        /*if(root.right != next){
-            pre.left = next.right;
-            next.right = root.right;
-        }*/
 
         return root.right;
     }
