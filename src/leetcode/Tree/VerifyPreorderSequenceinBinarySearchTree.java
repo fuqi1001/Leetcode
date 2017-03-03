@@ -8,6 +8,7 @@ import java.util.Stack;
 public class VerifyPreorderSequenceinBinarySearchTree {
 
     ///https://segmentfault.com/a/1190000003874375
+    //用index使用原数组模拟stack.
 
     public boolean verifyPreorder(int[] preorder){
         int index = -1;
