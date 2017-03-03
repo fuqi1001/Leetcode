@@ -41,7 +41,8 @@ public class BinaryTreeLongestConsecutiveSequence {
         return Math.max(Math.max(left, right), count);
     }
 
-    //bfs
+    //bfs//false
+    //[1,2,2,3,3,3,3,null,null,4]
 
     public int longestConsecutive(TreeNode root) {
         if(root == null) return 0;
