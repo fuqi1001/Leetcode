@@ -1,8 +1,6 @@
 package leetcode.Tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by qifu on 16/10/25.
@@ -72,4 +70,33 @@ public class SumRoottoLeafNumbers {
         }
         return sum;
     }
+
+    //
+    public int sumNumbers(TreeNode root) {
+        if(root == null) return 0;
+        String str = "";
+        List<String> list = new ArrayList<>();
+        num(list, root, str);
+        int sum = 0;
+
+        for(String cur : list) {
+            sum += Integer.valueOf(cur);
+        }
+        return sum;
+    }
+    public void num(List<String> list, TreeNode root, String str) {
+        str = str + root.val;
+        if(root.left == null && root.right == null) {
+            list.add(str);
+        }
+        if(root.left != null) {
+            num(list, root.left, str);
+        }
+        if(root.right != null) {
+            num(list, root.right, str);
+        }
+    }
+
+
+
 }
