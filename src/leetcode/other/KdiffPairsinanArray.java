@@ -1,9 +1,6 @@
 package leetcode.other;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by qifu on 17/3/4.
@@ -54,6 +51,24 @@ public class KdiffPairsinanArray {
             if (m==n && map.get(n)>=2) cnt++;
         }
         return cnt;
+    }
+
+    //
+    public int findPairs(int[] nums, int k) {
+        Arrays.sort(nums);
+        Set<Integer> seenNum = new HashSet<>();
+        Set<String> seenPair = new HashSet<>();
+        int result = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            int prev = nums[i] - k;
+            if (seenNum.contains(prev) && !seenPair.contains(prev + "," + nums[i])) {
+                result++;
+                seenPair.add(prev + "," + nums[i]);
+            }
+            seenNum.add(nums[i]);
+        }
+        return result;
     }
 }
 
