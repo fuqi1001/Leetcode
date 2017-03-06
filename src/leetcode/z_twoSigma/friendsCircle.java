@@ -1,4 +1,4 @@
-package leetcode.twoSigma;
+package leetcode.z_twoSigma;
 
 /**
  * Created by qifu on 17/2/15.

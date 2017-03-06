@@ -1,4 +1,4 @@
-package leetcode.twoSigma;
+package leetcode.z_twoSigma;
 
 import java.util.*;
 
