@@ -1,5 +1,7 @@
 package leetcode.other;
 
+import java.util.Stack;
+
 /**
  * Created by qifu on 16/11/30.
  */
