@@ -30,6 +30,7 @@ public class MeetingRooms {
         return true;
     }
 
+    //
     private boolean canAttendMeetings(Interval[] intervals){
         try{
             Arrays.sort(intervals, new IntervalComparator());
