@@ -1,4 +1,4 @@
-package leetcode.other;
+package leetcode.DPandBackTracking;
 
 /**
  * Created by qifu on 16/9/7.
@@ -20,5 +20,25 @@ public class ClimbingStairs {
         要么是 上一阶走两步
         所以 dp[i] = dp[i-1]+dp[i-2];
          */
+    }
+
+    //
+    public int climbStairs(int n) {
+        // base cases
+        if(n <= 0) return 0;
+        if(n == 1) return 1;
+        if(n == 2) return 2;
+
+        int one_step_before = 2;
+        int two_steps_before = 1;
+        int all_ways = 0;
+
+        for(int i=2; i<n; i++){
+            all_ways = one_step_before + two_steps_before;
+            two_steps_before = one_step_before;
+            one_step_before = all_ways;
+        }
+        return all_ways;
+
     }
 }
