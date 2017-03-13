@@ -1,5 +1,7 @@
 package leetcode.other;
 
+import java.util.Arrays;
+
 /**
  * Created by qifu on 16/10/18.
  */
@@ -29,6 +31,16 @@ public class SearchInsertPosition {
         }
         return left;
     }
+
+    //binary search with Arrays.binarySearch()
+    public int searchInsert(int[] nums, int target) {
+        int index = Arrays.binarySearch(nums, target);
+        if(index >= 0) return index;
+        else {
+            return -1 * (index + 1);
+        }
+    }
+    //
 
     public int searchInsert(int[] nums, int target){
         if ( nums == null || nums.length == 0){
