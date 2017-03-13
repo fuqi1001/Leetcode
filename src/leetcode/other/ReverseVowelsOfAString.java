@@ -29,4 +29,26 @@ public class ReverseVowelsOfAString {
         }
         return false;
     }
+    //
+    public String reverseVowels(String s) {
+        if(s == null || s.length() <= 1) return s;
+        int start = 0;
+        int end = s.length() - 1;
+        char[] str = s.toCharArray();
+        String vowels = "aeiouAEIOU";
+        while(start < end) {
+
+
+            if(vowels.contains(str[start]+"") && vowels.contains(str[end]+"")){
+                char temp = str[start];
+                str[start] = str[end];
+                str[end] = temp;
+                start++;
+                end--;
+            }
+            if(!vowels.contains(str[start]+"")) start++;
+            if(!vowels.contains(str[end]+"")) end--;
+        }
+        return new String(str);
+    }
 }
