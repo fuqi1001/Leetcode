@@ -1,5 +1,6 @@
 package leetcode.other;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -42,4 +43,11 @@ public class MajorityElement {
         return candidate;
     }//http://bookshadow.com/weblog/2014/12/22/leetcode-majority-element/
     //test
+
+    //
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        int mid = nums.length / 2;
+        return nums[mid];
+    }
 }
