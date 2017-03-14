@@ -21,6 +21,7 @@ public class PascalsTriangleII {
     }
 
     /*
+    
      1 3 3 1 下一排
      先res.add(0,1)  变成  1 1 3 3 1
      然后从1位开始 与下一位相加
