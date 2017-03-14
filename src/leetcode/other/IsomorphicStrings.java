@@ -26,4 +26,15 @@ public class IsomorphicStrings {
         }
         return true;
     }
+
+    //
+    public boolean isIsomorphic(String s, String t) {
+        int[] pos = new int[512];   //use 0-255 keep s,  256-512 keep t.
+        for(int i = 0; i < s.length(); i++) {
+            if(pos[s.charAt(i)] != pos[t.charAt(i) + 256]) return false;
+            pos[s.charAt(i)] = i + 1;
+            pos[t.charAt(i) + 256] = i + 1;
+        }
+        return true;
+    }
 }
