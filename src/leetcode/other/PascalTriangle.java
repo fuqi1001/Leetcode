@@ -21,7 +21,7 @@ public class PascalTriangle {
             List<Integer> temp = new ArrayList<>();
             temp.add(1);
             for(int j = 0 ; j < pre.size() - 1 ; j++){
-                temp.add(pre.indexOf(j)+pre.indexOf(j+1));
+                temp.add(pre.get(j)+pre.get(j+1));
             }
             temp.add(1);
             pre = temp;
