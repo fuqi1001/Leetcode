@@ -18,9 +18,23 @@ public class CountPrimes {
         }
         int result=0;
         for(int i = 0 ; i < n ;i++){
-            if(!notPrime[i])
-                result++;
+            if(!notPrime[i]) result++;
         }
         return result;
+    }
+
+    //
+    public int countPrimes(int n) {
+        boolean[] not = new boolean[n];
+        int count = 0;
+        for(int i = 2; i < n; i++) {
+            if(!not[i]) {
+                count++;
+                for(int j = 2 ; i * j < n; j++) {
+                    not[i * j] = true;
+                }
+            }
+        }
+        return count;
     }
 }
