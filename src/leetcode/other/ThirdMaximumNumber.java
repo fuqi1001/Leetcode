@@ -1,5 +1,10 @@
 package leetcode.other;
 
+import java.util.HashSet;
+import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.TreeSet;
+
 /**
  * Created by qifu on 17/1/5.
  */
@@ -34,5 +39,42 @@ public class ThirdMaximumNumber {
         }else {
             return max;
         }
+    }
+
+    //
+    public int thirdMax(int[] nums)  {
+        int size = 3;
+        TreeSet<Integer> set = new TreeSet<>();
+        for(int num : nums) {
+            if(set.contains(num)) continue;
+            if(set.size() < num) {
+                set.add(num);
+            } else if(set.size() == size && set.first() < num){
+                set.remove(set.first());
+                set.add(num);
+            }
+        }
+        return set.size() == size ? set.first() : set.last();
+    }
+
+    //
+    public int thirdMax(int[] nums) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        Set<Integer> set = new HashSet<>();
+        for(int num : nums) {
+            if(!set.contains(num)) {
+                pq.offer(num);
+                set.add(num);
+                if(pq.size() > 3) {
+                    set.remove(pq.poll());
+                }
+            }
+        }
+        if(pq.size() < 3) {
+            while(pq.size() > 1) {
+                pq.poll();
+            }
+        }
+        return pq.peek();
     }
 }
