@@ -36,4 +36,13 @@ public class LengthofLastWord {
 
         return count;
     }
+
+    //
+    public int lengthOfLastWord(String s) {
+        if(s == null || s.length() == 0) return 0;
+        s = "x " + s;
+        String[] str = s.split(" +");
+        if(str.length == 1) return 0;
+        return str[str.length - 1].length();
+    }
 }
