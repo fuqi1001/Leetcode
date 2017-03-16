@@ -21,7 +21,7 @@ public class BeautifulArrangement {
                 helper(N, pos + 1, used);
                 used[i] = 0;
             }
-            
+
         }
     }
 
