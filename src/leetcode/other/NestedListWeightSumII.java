@@ -19,7 +19,7 @@ public class NestedListWeightSumII {
                     nextLevel.addAll(cur.getList());
                 }
             }
-            weight += unweight;
+            weight += unweight;     //unweight不清空,所以每层都加了之前的integer一次
             nestedList = nextLevel;
         }
         return weight;
