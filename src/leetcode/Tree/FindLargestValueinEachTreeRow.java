@@ -1,5 +1,6 @@
 package leetcode.Tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -25,5 +26,23 @@ public class FindLargestValueinEachTreeRow {
             res.add(max);
         }
         return res.stream().mapToInt(k->k).toArray();
+    }
+
+
+    ///
+    public List<Integer> largestValues(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        dfs(root, res, 0);
+        return res;
+    }
+    private void dfs(TreeNode root, List<Integer> res, int level ){
+        if(root == null) return;
+        if(level == res.size()) {
+            res.add(root.val);
+        } else {
+            res.set(level, Math.max(res.get(level), root.val));
+        }
+        dfs(root.left, res, level + 1);
+        dfs(root.right, res, level + 1);
     }
 }
