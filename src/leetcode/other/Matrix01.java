@@ -1,9 +1,6 @@
 package leetcode.other;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Created by qifu on 17/3/18.
