@@ -27,4 +27,24 @@ public class TernaryExpressionParser {
         }
         return String.valueOf(stack.peek());
     }
+
+    //DFS
+    public String parseTernary(String expression) {
+        if(expression == null || expression.length() == 0) return "";
+        return DFS(expression.toCharArray(), 0, expression.length() - 1) + "";
+    }
+    private char DFS(char[] c, int start, int end){
+        if(start == end) return c[start];
+        int count = 0;
+        int i = start;
+        for(; i <= end; i++) {
+            if(c[i] == '?') {
+                count++;
+            } else if(c[i] == ':'){
+                count--;
+                if(count == 0) break;
+            }
+        }
+        return c[start] == 'T' ? DFS(c, start + 2, i -1) : DFS(c, i + 1, end);
+    }
 }
