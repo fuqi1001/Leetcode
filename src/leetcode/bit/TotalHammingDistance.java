@@ -11,9 +11,9 @@ public class TotalHammingDistance {
             int bitCount = 0;
 
             for(int j = 0; j < nums.length; j++){
-                bitCount += (nums[j] >> i) & 1;
+                bitCount += (nums[j] >> i) & 1;     //统计所有第i位上为1的数的个数
             }
-            total += bitCount * (nums.length - bitCount);
+            total += bitCount * (nums.length - bitCount);   //为1 * 不为1 = 所有hanmming距离
         }
         return total;
 
