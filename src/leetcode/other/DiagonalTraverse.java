@@ -29,4 +29,11 @@ public class DiagonalTraverse {
         }
         return result;
     }
+    /*
+    If out of bottom border (row >= m) then row = m - 1; col += 2; change walk direction.
+    if out of right border (col >= n) then col = n - 1; row += 2; change walk direction.
+    if out of top border (row < 0) then row = 0; change walk direction.
+    if out of left border (col < 0) then col = 0; change walk direction.
+    Otherwise, just go along with the current direction.
+     */
 }
