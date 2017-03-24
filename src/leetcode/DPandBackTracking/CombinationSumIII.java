@@ -8,20 +8,51 @@ import java.util.List;
  */
 public class CombinationSumIII {
     public List<List<Integer>> combinationSum3(int k, int n) {
-        List<List<Integer>> result = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
-        helper(k,n,1,list,result);
-        return result;
+        conbination(res, list, 1, k, n);
+        return res;
     }
-
-    public void helper(int k, int n, int num,List<Integer> list,List<List<Integer>> result){
-        if(n < 0 || list.size() > k) return;
-        if( n == 0 && list.size() == k) result.add(new ArrayList<>(list));
-        for(int i = num; i <= 9 ; i++){
+    private void conbination(List<List<Integer>> res, List<Integer> list, int index, int k, int n) {
+        if(list.size() == k && n == 0) {
+            res.add(new ArrayList<>(list));
+            return;
+        }
+        for(int i = index; i <= 9; i++) {
             list.add(i);
-            helper(k,n - i,i+1,list,result);
+            conbination(res, list, i + 1, k, n - i);
             list.remove(list.size() - 1);
         }
-
     }
+    //剪枝
+    /*
+    当 结余n - i < 0 时, 已不能满足合的要求 所以可以停止
+    当当前list size大于 k 时, 可以停止查找
+    当余下数字不足还需数字时  可以停止查找
+
+     */
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        conbination(res, list, 1, k, n);
+        return res;
+    }
+    private void conbination(List<List<Integer>> res, List<Integer> list, int index, int k, int n) {
+        if(list.size() > k) return;
+        if(list.size() == k && n == 0) {
+            res.add(new ArrayList<>(list));
+            return;
+        }
+        int right = 9 - k + list.size();
+        // System.out.println(right);
+        for(int i = index; i <= right + 1; i++) {
+            if(n - i >= 0) {
+                list.add(i);
+                conbination(res, list, i + 1, k, n - i);
+                list.remove(list.size() - 1);
+            }
+
+        }
+    }
+
 }
