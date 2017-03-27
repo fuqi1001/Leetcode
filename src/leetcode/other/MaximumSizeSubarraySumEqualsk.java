@@ -23,4 +23,26 @@ public class MaximumSizeSubarraySumEqualsk {
         }
         return max;
     }
+
+
+    //
+    public int maxSubArrayLen(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int sum = 0;
+        int max = 0;
+        map.put(0, -1);
+        for(int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            max = Math.max(max, i - map.getOrDefault(sum - k, i));
+            /*
+            map.put(0, -1)
+            sum - k = 0;
+            => sum = k;
+            说明到i位置时, 符合要求  max = i + 1;
+            => i - (-1)
+             */
+            map.putIfAbsent(sum, i);
+        }
+        return max;
+    }
 }
