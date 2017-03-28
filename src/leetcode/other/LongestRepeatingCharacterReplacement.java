@@ -4,6 +4,24 @@ package leetcode.other;
  * Created by qifu on 16/10/25.
  */
 public class LongestRepeatingCharacterReplacement {
+
+    //
+    public int characterReplacement(String s, int k) {
+        int start = 0;
+        int end = 0;
+        int max = 0;
+        int[] count = new int[128];
+        for(;end < s.length(); end++) {
+            max = Math.max(max, ++count[s.charAt(end)]);
+            if(max + k <= end - start ) {
+                count[s.charAt(start++)]--;
+            }
+        }
+        return s.length() - start;
+    }
+
+
+    //
     public int characterReplacement(String s, int k) {
         int n = s.length();
         if(n == 0) return 0;
