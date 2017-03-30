@@ -7,75 +7,37 @@ import java.util.Stack;
  */
 public class DecodeString {
     public String decodeString(String s) {
-        Stack<Integer> num = new Stack<>();
-        Stack<String> str = new Stack<>();
-        String res = "";
-        if(s == null || s.length() == 0)return res;
-
-        int count = 0;
-        String temp = "";
-        for(int i = 0 ; i < s.length() ;i++){
-            if(s.charAt(i) >= '0' && s.charAt(i) <= '9'){
-                count = count * 10 + s.charAt(i)-'0';
-            }
-            else if(s.charAt(i) == '['){
-                num.push(count);
-                str.push(temp);
-                count = 0;
-                temp ="";
-            }
-            else if(s.charAt(i) == ']'){
-                int cur_num = num.pop();
-                String cur_str = str.pop();
-                //System.out.println("num:" +cur_num);
-                for(int j = 0 ; j < cur_num ;j++){
-                    cur_str += temp;
+        Stack<Integer> stack_num = new Stack<>();
+        Stack<String> stack_str = new Stack<>();
+        String result_str = "";
+        int index = 0;
+        while(index < s.length()) {
+            char c = s.charAt(index);
+            if(Character.isDigit(c)) {
+                int num = 0;
+                while(Character.isDigit(s.charAt(index))) {
+                    num = num * 10 + (s.charAt(index) - '0');
+                    index++;
                 }
-                temp = cur_str;
-            }
-            else{
-                temp += s.charAt(i);
-            }
-        }
-        if(str.isEmpty()){
-            return temp;
-        }else{
-            return str.pop();
-        }
-    }
-
-    int i = 0;
-    public String decodeString(String s) {
-        if(s.length() == 0) return "";
-        return helper(s,0);
-    }
-    private String helper(String s, int index){
-        if(index >= s.length()){
-            return "";
-        }
-        StringBuilder number = new StringBuilder();
-        StringBuilder str = new StringBuilder();
-        for(i = index ; i < s.length() ;i++ ){
-            if(Character.isDigit(s.charAt(i))){
-                number.append(s.charAt(i));
-            }
-            if(Character.isLetter(s.charAt(i))){
-                str.append(s.charAt(i));
-            }
-            if(s.charAt(i) == '['){
-                System.out.println("1: "+i);
-                String next_str = helper(s,i+1);
-                System.out.println("2: "+i);
-                //System.out.println("num: "+ number.toString());
-                for(int j = 0 ; j < Integer.valueOf(number.toString());j++){
-                    str.append(next_str);
+                stack_num.push(num);
+            } else if(c == '[') {
+                stack_str.push(result_str);
+                result_str = "";
+                index++;
+            } else if(c == ']') {
+                StringBuilder sb = new StringBuilder(stack_str.pop());
+                int times = stack_num.pop();
+                for(int i = 0; i < times; i++) {
+                    sb.append(result_str);
                 }
-                number.delete(0,number.length());
-            }else if(s.charAt(i) == ']'){
-                return str.toString();
+                result_str = sb.toString();
+                index++;
+            } else {
+                result_str += c;
+                index++;
             }
         }
-        return str.toString();
+        return result_str;
     }
 
 }
