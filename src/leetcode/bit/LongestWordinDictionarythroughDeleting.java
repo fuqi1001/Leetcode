@@ -29,4 +29,22 @@ public class LongestWordinDictionarythroughDeleting {
         }
         return "";
     }
+
+    //
+    public String findLongestWord(String s, List<String> d) {
+        String result = "";
+        for(String dict : d) {
+            int index = 0;
+            for(char c : s.toCharArray()) {
+                if(index < dict.length() && c == dict.charAt(index)) index++;
+            }
+
+            if(index == dict.length() && dict.length() >= result.length()) {
+                if(dict.length() > result.length() || dict.compareTo(result) < 0) {
+                    result = dict;
+                }
+            }
+        }
+        return result;
+    }
 }
