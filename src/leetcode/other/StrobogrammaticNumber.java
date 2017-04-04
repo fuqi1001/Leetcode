@@ -35,4 +35,32 @@ public class StrobogrammaticNumber {
         }
         return true;
     }
+
+    //
+    public boolean isStrobogrammatic(String num) {
+        if(num == null || num.length() == 0) return true;
+        int left = 0;
+        int right = num.length() - 1;
+        while(left < right) {
+            char l = num.charAt(left);
+            char r = num.charAt(right);
+            if(!helper(l,r)) return false;
+            left++;
+            right--;
+        }
+        if(num.length() % 2 != 0) {
+            char mid = num.charAt(num.length() / 2);
+            if(mid == '1' || mid =='0' || mid == '8') return true;
+            else return false;
+        }
+        return true;
+    }
+    public boolean helper(char left, char right) {
+        if( (left == '6' && right == '9') || (left == '9' && right == '6')) return true;
+        if( (left == '8' && right == '8')) return true;
+        if( (left == '1' && right == '1')) return true;
+        if( (left == '0' && right == '0')) return true;
+
+        return false;
+    }
 }
