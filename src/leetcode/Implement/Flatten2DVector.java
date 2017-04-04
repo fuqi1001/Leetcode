@@ -25,6 +25,6 @@ public class Flatten2DVector {
         while((number_it == null || !number_it.hasNext()) && list_it.hasNext()) {
             number_it = list_it.next().iterator();
         }
-        return number_it.hasNext();
+        return number_it != null && number_it.hasNext();
     }
 }
