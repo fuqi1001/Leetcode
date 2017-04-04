@@ -8,24 +8,23 @@ import java.util.List;
  */
 public class Flatten2DVector {
 
-    private Iterator<List<Integer>> i;
-    private Iterator<Integer> j;
-
+    Iterator<List<Integer>> list_it;
+    Iterator<Integer> number_it;
     public Vector2D(List<List<Integer>> vec2d) {
-        i = vec2d.iterator();
+        list_it = vec2d.iterator();
     }
 
     @Override
     public Integer next() {
         hasNext();
-        return j.next();
+        return number_it.next();
     }
 
     @Override
     public boolean hasNext() {
-        while( (j == null || !j.hasNext()) && i.hasNext() ){
-            j = i.next().iterator();
+        while((number_it == null || !number_it.hasNext()) && list_it.hasNext()) {
+            number_it = list_it.next().iterator();
         }
-        return j!=null && j.hasNext();
+        return number_it.hasNext();
     }
 }
