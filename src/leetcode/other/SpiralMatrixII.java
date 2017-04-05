@@ -4,36 +4,33 @@ package leetcode.other;
  * Created by qifu on 16/10/19.
  */
 public class SpiralMatrixII {
-    public int[][] generateMatrix(int n){
-        if(n < 0) return null;
+    public int[][] generateMatrix(int n) {
         int[][] res = new int[n][n];
 
-        int xstart = 0;
-        int ystart = 0;
+        int x_index = 0;
+        int y_index = 0;
+        int cur_num = 1;
 
-        int num = 1;
-
-        while(n > 0){
-            if(n == 1){
-                res[ystart][xstart] = num++;
+        while(n > 0) {
+            if(n == 1) {
+                res[x_index][y_index] = cur_num++;
                 break;
             }
-            for(int i = 0 ; i < n - 1;i++){
-                res[ystart][xstart + i] = num++;
+            for(int i = 0; i < n - 1; i++) {
+                res[x_index][y_index+i] = cur_num++;
             }
-            for(int i = 0 ; i < n - 1;i++){
-                res[ystart + i][xstart+ n - 1] = num++;
+            for(int i = 0; i < n - 1; i++) {
+                res[x_index+i][y_index+n-1] = cur_num++;
             }
-            for(int i = 0 ; i < n - 1; i++){
-                res[ystart + n - 1][xstart + n - 1 - i] = num++;
+            for(int i = 0; i < n - 1; i++) {
+                res[x_index+n-1][y_index+n-1-i] = cur_num++;
             }
-            for(int i = 0 ; i < n - 1; i++){
-                res[ystart + n - 1 - i][xstart] = num++;
+            for(int i = 0; i < n - 1; i++) {
+                res[x_index+n-1-i][y_index] = cur_num++;
             }
-
-            xstart++;
-            ystart++;
-            n -= 2;
+            x_index++;
+            y_index++;
+            n-=2;
         }
         return res;
     }
