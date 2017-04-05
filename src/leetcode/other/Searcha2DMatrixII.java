@@ -8,18 +8,20 @@ public class Searcha2DMatrixII {
         if(matrix == null || matrix.length == 0) return false;
         if(matrix[0] == null || matrix[0].length == 0) return false;
 
-        int m = matrix.length;
-        int n = matrix[0].length;
+        int row = matrix.length;
+        int col = matrix[0].length;
 
-        int x = m - 1;
-        int y = 0;
-
-        while( x >= 0 && y < n ){
-            if(matrix[x][y] == target) return true;
-            else if(matrix[x][y] > target) x--;
-            else y++;
+        int x_index = row - 1;
+        int y_index = 0;
+        while(x_index >= 0 && y_index < col) {
+            int cur = matrix[x_index][y_index];
+            if(cur == target) return true;
+            else if(cur < target) {
+                y_index++;
+            } else if(cur > target) {
+                x_index--;
+            }
         }
         return false;
-
     }
 }
