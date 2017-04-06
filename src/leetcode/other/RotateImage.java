@@ -36,4 +36,9 @@ public class RotateImage {
             }
         }
     }
+    /*
+    i = len / 2;
+    j = (len + 1) / 2;
+    =>为了处理矩阵为奇数的情况,若不加1  则会少转正中间
+     */
 }
