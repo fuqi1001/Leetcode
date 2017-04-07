@@ -6,6 +6,31 @@ import java.util.*;
  * Created by qifu on 16/10/21.
  */
 public class UglyNumberII {
+
+
+    //
+    public int nthUglyNumber(int n) {
+        int[] primes = {2, 3, 5};
+        int[] count = new int[3];
+        int[] res = new int[n];
+
+        res[0] = 1;
+        for(int i = 1; i < n; i++) {
+            int min = Integer.MAX_VALUE;
+            for(int j = 0; j < 3; j++) {
+                min = Math.min(min, res[count[j]] * primes[j]);
+            }
+            res[i] = min;
+            for(int j = 0; j < 3; j++) {
+                if(min == res[count[j]] * primes[j]){
+                    count[j]++;
+                }
+            }
+        }
+        return res[n - 1];
+    }
+
+
     //O(n)
     public int nthUglyNumber(int n) {
         List<Integer> res = new ArrayList<>();
@@ -48,4 +73,6 @@ public class UglyNumberII {
         }
         return number.intValue();
     }
+
+
 }
