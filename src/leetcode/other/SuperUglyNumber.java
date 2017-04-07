@@ -8,19 +8,23 @@ import java.util.Queue;
  */
 public class SuperUglyNumber {
     public int nthSuperUglyNumber(int n, int[] primes) {
+        int[] count = new int[primes.length];
         int[] res = new int[n];
-        int[] times = new int[primes.length];
 
-        res[0] = 1;
-        for(int i = 1; i < n ;i++){
+        res[0] = 1;     //1是第一个
+        for(int i = 1; i < n; i++) {
             int min = Integer.MAX_VALUE;
-            for(int j = 0 ; j < primes.length ;j++){
-                min = Math.min(min, primes[j] * res[times[j]]);
+            //循环整个primes数组，每一个质数都用一遍，找到最小的append到res里面
+            for(int j = 0; j < primes.length; j++) {
+                min = Math.min(min, res[count[j]] * primes[j]);
+                //res[count[j]] 表示第j个prime 用了count[j]次了的结果
+
             }
             res[i] = min;
-            for(int j = 0 ; j < times.length;j++){
-                if(min == primes[j] * res[times[j]])
-                    times[j]++;
+            for(int j = 0; j < primes.length; j++) {
+                if(min == res[count[j]] * primes[j]) {
+                    count[j]++;
+                }
             }
         }
         return res[n - 1];
