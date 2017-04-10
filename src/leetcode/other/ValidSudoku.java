@@ -7,6 +7,11 @@ import java.util.Arrays;
  * Created by qifu on 16/9/15.
  */
 public class ValidSudoku {
+
+    /*
+    仅仅判断了是否合理,并未完成填空
+
+     */
     public boolean isValidSudoku(char[][] board) {
         boolean[] visited = new boolean[9];
         //row
