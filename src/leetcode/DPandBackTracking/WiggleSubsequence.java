@@ -7,28 +7,26 @@ import java.util.Arrays;
  */
 public class WiggleSubsequence {
     public int wiggleMaxLength(int[] nums) {
-        int size = nums.length;
-        if(size == 0) return 0;
-
-        int[] up = new int[size];
-        int[] down = new int[size];
+        if(nums == null || nums.length == 0) return 0;
+        int len = nums.length;
+        int[] up = new int[len];
+        int[] down = new int[len];
 
         Arrays.fill(up,1);
         Arrays.fill(down,1);
 
-        for(int i = 1; i < size; i++){
-            for(int j = 0 ; j < i; j++){
-                if(nums[j] < nums[i]){   //going down
+        for(int i = 1; i < len; i++) {
+            for(int j = 0; j < i; j++) {
+                if(nums[j] < nums[i]){
                     up[i] = Math.max(up[i], down[j] + 1);
-                } else {            //goind up
+                } else if(nums[j] > nums[i]) {
                     down[i] = Math.max(down[i], up[j] + 1);
                 }
             }
         }
-
         Arrays.sort(up);
         Arrays.sort(down);
-        return Math.max(up[size - 1], down[size - 1]);
+        return Math.max(up[len - 1], down[len - 1]);
 
     }
 
