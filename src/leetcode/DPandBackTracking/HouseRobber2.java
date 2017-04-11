@@ -5,22 +5,24 @@ package leetcode.DPandBackTracking;
  */
 public class HouseRobber2 {
     public int rob(int[] nums) {
-        if(nums == null || nums.length == 0) return 0;
         if(nums.length == 1) return nums[0];
-
-        int[] dp1 = new int[nums.length];
-        int[] dp2 = new int[nums.length];
-
-        dp1[0] = 0;
-        dp1[1] = nums[0];
-        for(int i = 2 ; i < dp1.length ;i++){
-            dp1[i] = Math.max(dp1[i - 1] , dp1[i - 2]+ nums[i - 1]);
-        }
-        dp2[0] = 0;
-        dp2[1] = nums[1];
-        for(int i = 2 ; i < dp2.length ;i++){
-            dp2[i] = Math.max(dp1[i - 1] , dp1[i - 2]+ nums[nums.length - i]);
-        }
-        return dp1[dp1.length - 1] > dp2[dp2.length - 1] ? dp1[dp1.length - 1]: dp2[dp2.length - 1];
+        return Math.max(helper(nums, 0, nums.length - 2), helper(nums, 1, nums.length - 1));
     }
+    public int helper(int[] nums, int left, int right) {
+        int in = 0, out = 0;
+        for(int i = left; i <= right; i++) {
+            int temp_in = in;           //in表示nums[cur],out表示不包括nums[cur]
+            int temp_out = out;         //上一轮的结果
+            in = temp_out + nums[i];    //temp_out不包括上一轮边界,所以可以加nums[cur];
+            out = Math.max(temp_in, temp_out);
+        }
+        return Math.max(in, out);
+    }
+    /*
+    统计 0 -> (len - 1)
+    或者 1 -> (len)
+    就两种情况
+
+    无需dp储存中间
+     */
 }
