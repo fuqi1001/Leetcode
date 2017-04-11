@@ -8,11 +8,9 @@ import java.util.StringJoiner;
  * Created by qifu on 16/10/28.
  */
 public class LetterCombinationsofaPhoneNumber {
-    int resSize ;
     public List<String> letterCombinations(String digits) {
         List<String> res = new ArrayList<>();
-        if(digits.length() == 0 ) return res;
-        resSize = digits.length();
+        if(digits == null || digits.length() == 0) return res;
         String[] str = new String[8];
         str[0] = "abc";
         str[1] = "def";
@@ -22,29 +20,21 @@ public class LetterCombinationsofaPhoneNumber {
         str[5] = "pqrs";
         str[6] = "tuv";
         str[7] = "wxyz";
-        StringBuilder cur = new StringBuilder();
-
-        helper(res,cur,str,0,digits);
+        StringBuilder sb = new StringBuilder();
+        helper(digits, str, 0, res, sb);
         return res;
     }
-    public void helper(List<String> res, StringBuilder cur, String[] str, int size, String digits){
-
-        if(cur.length() == resSize) {
-            res.add(cur.toString());
+    private void helper(String digits, String[] str, int index, List<String> res, StringBuilder sb) {
+        if(index == digits.length()) {
+            res.add(sb.toString());
             return;
         }
 
-        String curStr = str[(digits.charAt(size) - '0') - 2];
-
-        int len = curStr.length();
-        for(int i = 0 ; i < len ;i++){
-
-            cur.append(curStr.charAt(i));
-
-            helper(res,cur,str,size+1,digits);
-
-            cur.deleteCharAt(cur.length()-1);
-            size = cur.length();
+        String option = str[(digits.charAt(index) - '0') - 2];
+        for(char c: option.toCharArray()) {
+            sb.append(c);
+            helper(digits, str, index + 1, res, sb);
+            sb.deleteCharAt(sb.length() - 1);
         }
     }
 
