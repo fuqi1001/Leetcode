@@ -5,25 +5,26 @@ package leetcode.other;
  */
 public class NumberOfIslands {
     public int numIslands(char[][] grid) {
-        int res = 0 ;
-        if(grid.length == 0) return res;
-        for(int i = 0 ; i < grid.length ;i++){
-            for(int j = 0 ; j < grid[0].length; j++){
-                if(grid[i][j] == 1){
-
-                    searchIsLand(grid,i,j);
+        if(grid == null || grid.length == 0 || grid[0].length == 0) return 0;
+        int res = 0;
+        for(int i = 0; i < grid.length; i++) {
+            for(int j = 0; j < grid[0].length; j++) {
+                if(grid[i][j] == '1') {
+                    cover(grid, i, j);
                     res++;
                 }
             }
         }
         return res;
     }
-
-    private void searchIsLand(char[][] grid, int i, int j){
-        grid[i][j] = 0;
-        if(i > 0 && grid[i - 1][j] == '1') searchIsLand(grid, i - 1, j);
-        if(j > 0 && grid[i][j - 1] == '1') searchIsLand(grid, i, j - 1);
-        if(i < grid.length - 1 && grid[i+1][j] == '1') searchIsLand(grid,i+1,j);
-        if(j < grid[0].length - 1 && grid[i][j+1] == '1') searchIsLand(grid,i,j+1);
+    private void cover(char[][] grid, int x, int y) {
+        grid[x][y] = '0';
+        if(x > 0 && grid[x-1][y] == '1') cover(grid, x-1, y);
+        if(x < grid.length - 1 && grid[x+1][y] == '1') cover(grid, x+1, y);
+        if(y > 0 && grid[x][y-1] == '1') cover(grid, x, y-1);
+        if(y < grid[0].length - 1 && grid[x][y + 1]=='1') cover(grid, x, y+1);
     }
+    /*
+    找到一个'1' 就递归把上下左右的'1'全部置为'0'
+     */
 }
