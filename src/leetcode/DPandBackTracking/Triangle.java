@@ -18,4 +18,12 @@ public class Triangle {
         }
         return res[0];
     }
+
+    /*
+    从下往上求和, 每个点都找下一层同index 与 index + 1的两个位置的和的较小值加
+        min(res[j],res[j+1])+ val
+        在往上走的过程中 储存值得res数组逐层被缩小
+        最后只有res[0]存储了结果
+
+     */
 }
