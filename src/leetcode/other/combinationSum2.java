@@ -34,4 +34,29 @@ public class combinationSum2 {
         }
     }
 
+
+
+    //sucks
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        Set<List<Integer>> set = new HashSet<>();
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> cur = new ArrayList<>();
+        Arrays.sort(candidates);
+        helper(candidates, set, cur, 0, 0, target);
+        res.addAll(set);
+        return res;
+    }
+    private void helper(int[] nums,Set<List<Integer>> set, List<Integer> cur, int index, int value, int target) {
+        if(value == target) {
+            set.add(new ArrayList(cur));
+        } else if(value > target) return;
+
+        for(int i = index; i < nums.length; i++) {
+            cur.add(nums[i]);
+            value += nums[i];
+            helper(nums, set, cur, i+1, value, target);
+            cur.remove(cur.size() - 1);
+            value -= nums[i];
+        }
+    }
 }
