@@ -10,38 +10,69 @@ import java.util.Set;
  */
 public class DesignPhoneDirectory {
 
-    int max = 0;
-    Set<Integer> used = new HashSet<>();
-    Queue<Integer> available = new LinkedList<>();
-
+    Set<Integer> set;
     /** Initialize your data structure here
      @param maxNumbers - The maximum numbers that can be stored in the phone directory. */
     public PhoneDirectory(int maxNumbers) {
-        max = maxNumbers;
-        for(int i = 0 ; i < maxNumbers; i++){
-            available.add(i);
+        set =new HashSet<>();
+        for(int i = 0; i < maxNumbers; i++) {
+            set.add(i);
         }
     }
 
     /** Provide a number which is not assigned to anyone.
      @return - Return an available number. Return -1 if none is available. */
     public int get() {
-        Integer get_num = available.poll();
-        if(get_num == null) return -1;
-        used.add(get_num);
-        return get_num;
+        if(set.size() <= 0) return -1;
+        else {
+            int temp = 0;
+            for(int num : set) {
+                temp = num;
+                break;
+            }
+            set.remove(temp);
+            return temp;
+        }
     }
 
     /** Check if a number is available or not. */
     public boolean check(int number) {
-        if(number >= max || number < 0) return false;
-        return !used.contains(number);
+        return set.contains(number);
     }
 
     /** Recycle or release a number. */
     public void release(int number) {
-        if(used.remove(number)){
-            available.add(number);
+        set.add(number);
+    }
+
+
+    //
+    int[] numbers;
+    /** Initialize your data structure here
+     @param maxNumbers - The maximum numbers that can be stored in the phone directory. */
+    public PhoneDirectory(int maxNumbers) {
+        numbers = new int[maxNumbers];
+    }
+
+    /** Provide a number which is not assigned to anyone.
+     @return - Return an available number. Return -1 if none is available. */
+    public int get() {
+        for(int i = 0; i < numbers.length; i++) {
+            if(numbers[i] == 0) {
+                numbers[i] = 1;
+                return i;
+            }
         }
+        return -1;
+    }
+
+    /** Check if a number is available or not. */
+    public boolean check(int number) {
+        return numbers[number] == 0;
+    }
+
+    /** Recycle or release a number. */
+    public void release(int number) {
+        numbers[number] = 0;
     }
 }
