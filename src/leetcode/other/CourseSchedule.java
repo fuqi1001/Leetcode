@@ -75,6 +75,11 @@ public class CourseSchedule {
         }
 
         visited[course] = 2;
+        /*
+        这里把visited[course]设成2  比设成0 能优化很多
+        设成0的话,又把course当成没扫过的点了 下次碰到还会进行dfs操作,
+        但是如果设成2的话,下次碰到就能直接跳过
+         */
         return true;
     }
 }
