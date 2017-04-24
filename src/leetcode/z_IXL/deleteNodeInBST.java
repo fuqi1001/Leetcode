@@ -34,7 +34,7 @@ public class deleteNodeInBST {
     Recursively find the node that has the same value as the key,
     then setting the left/right nodes equal to the returened subtree
 
-    Once the node is found, have to hadle 4 case
+    Once the node is found, have to handle 4 case
 
         node doesn't have left or right subtree, return null;
         node only has the left subtree, return left subtree;
@@ -87,5 +87,45 @@ public class deleteNodeInBST {
             next.right = root.right;
         }
         return next;
+    }
+
+
+    /////inster node in bst
+    public TreeNode insertNode(TreeNode root, TreeNode node) {
+        if(root == null) {
+            root = node;
+            return root;
+        }
+        TreeNode cur = root;
+        TreeNode prev = null;
+        while(cur != null) {
+            prev = cur;
+            if(cur.val > node.val) {
+                cur = cur.left;
+            } else {
+                cur = cur.right;
+            }
+        }
+        if(prev != null) {
+            if(prev.val > node.val) {
+                prev.left = node;
+            } else {
+                prev.right = node;
+            }
+        }
+        return root;
+    }
+
+    //recursive
+    public TreeNode insertNode(TreeNode root, TreeNode node) {
+        if(root == null) {
+            return root;
+        }
+        if(root.val > node.val) {
+            root.left = insertNode(root.left, node);
+        } else {
+            root.right = insertNode(root.right, node);
+        }
+        return root;
     }
 }
