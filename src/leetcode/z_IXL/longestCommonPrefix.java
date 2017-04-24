@@ -7,6 +7,14 @@ import java.util.Arrays;
  */
 public class longestCommonPrefix {
     //O(k nlogn)  n is the number of the strings, k is the average length
+
+    /*
+    sort the array first,
+    then what we need to do is just compare the first and the last element in the sorted array
+    character by character, until get the different element
+    break the loop, return result;
+
+     */
     public String longestCommonPrefix(String[] strs) {
         StringBuilder result = new StringBuilder();
         if(strs != null && strs.length > 0) {
@@ -41,4 +49,13 @@ public class longestCommonPrefix {
         }
         return sb.toString();
     }
+
+    /*
+    use a stringbuilder element keep the result prefix
+    we use the first element in the string array as the reference
+    then go through the rest of the array
+    character by character,
+    once we get a character doesnt match with the first elements
+    we break the loop and then cover the stringBuilder to string and return the string
+     */
 }
