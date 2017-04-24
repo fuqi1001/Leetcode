@@ -8,6 +8,16 @@ public class charToInt {
     1. 去掉起始的空格
     2. 取到正负号
     3. 一组数字构成后,后面多的部分直接舍弃   +12345a213  a213部分无视
+
+    trim(), return a copy of the string, omit leading and trailing whitespace
+
+    First, I will use the trim() function to discards all leading whitespaces
+    After that, judge the first character of the rest string, get the sign for the number
+    Then use for loop to get each digit for the number, if i get some character not in the
+    range of 0 to 9, break the loop.
+    Also need to deal with the overflow
+
+
      */
 
     public int myAtoi(String str) {
@@ -36,4 +46,6 @@ public class charToInt {
         }
         return (int)temp;
     }
+
+
 }
