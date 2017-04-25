@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by qifu on 17/4/24.
  */
-public class stringderange {
+public class stringDerangements {
     public static void main(String[] args) {
         derangement("abc");
         System.out.println("===========");
