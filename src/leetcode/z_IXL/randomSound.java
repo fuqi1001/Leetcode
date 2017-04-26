@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by qifu on 17/4/22.
  */
-public class randomSoung {
+public class randomSound {
     List<Sound> correct_sounds;
     Sound error_sound;
     Sound prev_used;
