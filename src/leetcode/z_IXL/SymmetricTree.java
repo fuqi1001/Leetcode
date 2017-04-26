@@ -15,6 +15,8 @@ public class SymmetricTree {
              TreeNode right;
              TreeNode(int x) { val = x; }
          }
+
+    //O(n)
     public boolean isSymmetric(TreeNode root) {
         if(root == null) return true;
         return helper(root.left, root.right);
@@ -26,7 +28,7 @@ public class SymmetricTree {
         else return false;
     }
 
-    //interative
+    //interative O(n)
     public boolean isSymmetric(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
         if(root == null) return true;

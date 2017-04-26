@@ -6,6 +6,7 @@ import java.util.Stack;
  * Created by qifu on 17/4/22.
  */
 public class SortStack {
+    //time O(n^2)   space O(n)
     public Stack sortStack(Stack<Integer> stack) {
         Stack<Integer> temp = new Stack<>();
         while(!stack.isEmpty()) {
