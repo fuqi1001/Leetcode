@@ -4,7 +4,7 @@ package leetcode.z_IXL;
  * Created by qifu on 17/4/24.
  */
 public class Fibonacci {
-    // Version: Recursion
+    // Version: Recursion  O(2^n)
     public static long fibo(long n ) {
         if(n == 0)
             return 0;
