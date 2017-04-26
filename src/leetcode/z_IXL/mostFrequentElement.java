@@ -22,7 +22,27 @@ public class mostFrequentElement {
         }
         return res;
     }
-
+    public int freq(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        Arrays.sort(nums);
+        int count = 1;
+        int maxCount = 0;
+        int prev = nums[0];
+        int res = nums[0];
+        for(int i = 1; i < nums.length; i++) {
+            if(nums[i] == prev) {
+                count++;
+            } else {
+                if(count > maxCount) {
+                    maxCount = count;
+                    res = nums[i];
+                }
+                prev = nums[i];
+                count = 1;
+            }
+        }
+        return res;
+    }
 
 
     //top k
