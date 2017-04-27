@@ -45,7 +45,7 @@ public class mostFrequentElement {
     }
 
 
-    //top k
+    //top k O(n * logk) k is number of unique element
     public List<Integer> topK(int[] nums, int k){
         Map<Integer, Integer> map = new HashMap<>();
         for(int num : nums) {
