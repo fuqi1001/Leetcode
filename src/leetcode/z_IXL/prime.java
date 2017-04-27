@@ -4,6 +4,7 @@ package leetcode.z_IXL;
  * Created by qifu on 17/4/27.
  */
 public class prime {
+    //O(n * sqrt(n))
     public int[] getPrime(int n) {
         int[] res = new int[n];
         res[0] = 1;
