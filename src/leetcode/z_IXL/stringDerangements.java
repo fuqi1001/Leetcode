@@ -11,7 +11,7 @@ public class stringDerangements {
         derangement("abc");
         System.out.println("===========");
     }
-
+    //O(n!)
     public static void derangement(String strs) {
         char[] ctr = strs.toCharArray();
         int len = strs.length();
