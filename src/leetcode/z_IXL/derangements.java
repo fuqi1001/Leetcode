@@ -13,7 +13,7 @@ public class derangements {
         System.out.println("===========");
         derangement(5);
     }
-
+    //O(n^2)
     public static void derangement(int n) {
         derangement(new int[n], new boolean[n], 0);
     }
