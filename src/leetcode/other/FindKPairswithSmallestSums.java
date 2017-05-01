@@ -33,7 +33,7 @@ public class FindKPairswithSmallestSums {
         for(int i = 0 ; i < Math.min(k, m * n); i++){
             Tuple temp = pq.poll();
             res.add(new int[] {nums1[temp.x] , nums2[temp.y]});
-            if(temp.x == m - 1) continue;
+            if(temp.x == m - 1) continue;   //如果是最后一个nums1, 跳过,不能再+1Le
             pq.offer(new Tuple(temp.x + 1, temp.y, nums1[temp.x + 1] + nums2[temp.y]));
         }
         return res;
