@@ -28,5 +28,9 @@ public class ReverseLinkedListII {
         pre.next.next = cur;
         pre.next = new_head;
         return dummy.next;
+        /*
+        翻转, 不是in place 交换,
+        箭头反向
+         */
     }
 }
