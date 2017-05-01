@@ -19,7 +19,10 @@ public class LineReflection {
             String str = pair[0] + "a" + pair[1];
             set.add(str);
         }
-
+        /*
+        此处的sum/2 相当于中线
+        sum-x 会得到与之对称的点的很坐标
+         */
         int sum = max + min;
         for(int[] pair : points){
             String str_o = (sum-pair[0]) + "a" + pair[1];
