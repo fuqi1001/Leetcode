@@ -33,6 +33,11 @@ public class MiniParser {
                     stack.pop();
                 }
             }
+
+            /*
+            如果碰到数字,会持续往下走并不进行操作
+            对数字的操作只需要substring即可
+             */
         }
         return res;
     }
