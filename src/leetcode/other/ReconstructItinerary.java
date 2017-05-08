@@ -28,4 +28,9 @@ public class ReconstructItinerary {
         }
         path.addFirst(departure);
     }
+
+    /*
+    使用priorityQueue 来保证smaller lexical order
+
+     */
 }
