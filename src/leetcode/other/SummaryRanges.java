@@ -25,4 +25,7 @@ public class SummaryRanges {
         }
         return res;
     }
+    /*
+    用while循环跳过中间连续的部分 保存头尾
+     */
 }
