@@ -42,4 +42,10 @@ public class BasicCalculatorII {
         }
         return res;
     }
+    /*
+    用sign 记录前一个符号,这样每次都能取当前数字和stack顶端数字进行计算
+    每次计算完后讲得到的结果压回栈中
+    最后将栈中元素进行累加
+
+     */
 }
