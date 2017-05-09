@@ -11,44 +11,31 @@ import java.util.List;
 public class MinimumHeightTrees {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         List<Integer> res = new ArrayList<>();
-        if(n == 0){
-            return res;
-        }
-        if(n == 1){
+        if(n == 1) {
             res.add(0);
             return res;
         }
-
-        ArrayList<HashSet<Integer>> graph = new ArrayList<>();
-        for(int i = 0 ; i < n; i++){
-            graph.add(new HashSet<Integer>());
+        List<HashSet<Integer>> graph = new ArrayList<>();
+        for(int i = 0; i < n; i++) {
+            graph.add(new HashSet<>());
         }
-
-        for(int[] edge : edges){
+        for(int[] edge: edges) {
             graph.get(edge[0]).add(edge[1]);
             graph.get(edge[1]).add(edge[0]);
         }
-
-        LinkedList<Integer> leaves = new LinkedList<>();
-        for(int i = 0 ; i < n ; i++){
-            if(graph.get(i).size() == 1){
-                leaves.offer(i);
+        List<Integer> leaves = new ArrayList<>();
+        for(int i = 0; i < graph.size(); i++) {
+            if(graph.get(i).size() == 1) {
+                leaves.add(i);
             }
         }
-
-        if(leaves.size() == 0){
-            return res;
-        }
-
-        while(n > 2){
-            n = n - leaves.size();
-
-            LinkedList<Integer> newLeaves = new LinkedList<>();
-
-            for(int le : leaves){
-                int neighbor = graph.get(le).iterator().next();
-                graph.get(neighbor).remove(le);
-                if(graph.get(neighbor).size() == 1){
+        while(n > 2) {
+            n -= leaves.size();
+            List<Integer> newLeaves = new ArrayList<>();
+            for(int leaf : leaves) {
+                int neighbor = graph.get(leaf).iterator().next();
+                graph.get(neighbor).remove(leaf);
+                if(graph.get(neighbor).size() == 1) {
                     newLeaves.add(neighbor);
                 }
             }
@@ -56,4 +43,11 @@ public class MinimumHeightTrees {
         }
         return leaves;
     }
+    /*
+    将整个树存在图中, 每次找只有一个相连节点的treeNode
+    这肯定是个叶子节点,从结果中剔除
+    并且将他们从相连节点的邻居节点中剔除
+    进行下一轮循环,直到剩下2个点或者2个以下
+
+     */
 }
