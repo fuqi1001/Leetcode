@@ -21,3 +21,9 @@ public class SentenceScreenFitting {
         return start / len;
     }
 }
+/*
+
+String.join("分隔符", string[]);
+把字符串数组组成完整字符串用空格分开每个词,
+并在结尾加个空格表示一组的结束
+ */
