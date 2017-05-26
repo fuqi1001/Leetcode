@@ -5,37 +5,32 @@ package leetcode.other;
  */
 public class AdditiveNumber {
     public boolean isAdditiveNumber(String num) {
-        for(int i = 0 ; i < num.length(); i++){
-            for(int j = i + 1; j < num.length() - i - 1; j++){
-                String first = num.substring(0, i + 1);
+        for(int i = 0; i < num.length(); i++) {
+            for(int j = i + 1; j < num.length() - i - 1; j++) {
+                String first = num.substring(0, i+1);
                 String second = num.substring(i+1, j+1);
-                if(valid(j+1, num, first, second)){
-                    return true;
-                }
+                if(isValid(num, j+1, first, second)) return true;
             }
         }
         return false;
     }
 
-    private boolean valid(int start, String num, String first, String second){
-        if(start == num.length()){
-            return true;
-        }
+    public boolean isValid(String num, int start, String first, String second) {
+        if(start == num.length()) return true;
 
-        long f = Long.parseLong(first);
-        long s = Long.parseLong(second);
+        long _first = Long.parseLong(first);
+        long _second = Long.parseLong(second);
 
-        if(!Long.toString(f).equals(first) || !Long.toString(s).equals(second)) return false;
+        if(!Long.toString(_first).equals(first) || !Long.toString(_second).equals(second)) return false;
 
-        long sum = f + s;
-        String sumS = Long.toString(sum);
-        if(start + sumS.length() > num.length() ) return false;
+        long sum = _first + _second;
+        String _sum = Long.toString(sum);
 
-        String third = num.substring(start, sumS.length() + start);
-        long t = Long.parseLong(third);
+        if(start + _sum.length() > num.length()) return false;
+        String third = num.substring(start, start + _sum.length());
+        long _third = Long.parseLong(third);
+        if(!third.equals(_sum) || sum != _third) return false;
 
-        if(!Long.toString(t).equals(third) || t != sum) return false;
-
-        return valid(start + sumS.length(), num, second, third);
+        return isValid(num, start + _sum.length(), second, third);
     }
 }
