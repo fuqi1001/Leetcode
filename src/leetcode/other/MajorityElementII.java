@@ -8,49 +8,42 @@ import java.util.List;
  * Created by qifu on 16/11/18.
  */
 public class MajorityElementII {
+    /*
+    思路是,一个数组中出现次数大于n/3的数字最多只有两个,
+    所以只需要两个mark来统计就好
+    在循环完成一次后,就会选出两个重复次数最多的数
+    然后再循环一次判断是否大于n/3
+
+     */
     public List<Integer> majorityElement(int[] nums) {
+        int mark_a = 0;
+        int mark_b = 0;
+        int count_a = 0;
+        int count_b = 0;
+        for(int num : nums) {
+            if(num == mark_a) count_a++;
+            else if(num == mark_b) count_b++;
+            else if(count_a == 0) {
+                mark_a = num;
+                count_a = 1;
+            }
+            else if(count_b == 0)  {
+                mark_b = num;
+                count_b = 1;
+            } else {
+                count_a--;
+                count_b--;
+            }
+        }
+        count_a = 0;
+        count_b = 0;
+        for(int num : nums) {
+            if(num == mark_a) count_a++;
+            else if(num == mark_b) count_b++;
+        }
         List<Integer> result = new ArrayList<>();
-
-        Integer num_one = null , num_two = null;
-        int count_one = 0, count_two = 0;
-        for(int curNum : nums){
-            if(num_one != null && curNum == num_one.intValue()){
-                count_one++;
-            }
-            else if(num_two != null && curNum == num_two.intValue()){
-                count_two++;
-            }
-            else if(count_one == 0){
-                count_one = 1;
-                num_one = curNum;
-            }
-            else if(count_two == 0){
-                count_two = 1;
-                num_two = curNum;
-            }
-            else{
-                count_one--;
-                count_two--;
-            }
-        }
-
-        count_one = count_two = 0;
-
-        for(int curNum : nums){
-            if(curNum == num_one.intValue()){
-                count_one++;
-            }
-            else if(curNum == num_two.intValue()){
-                count_two++;
-            }
-        }
-        if(count_one > nums.length / 3){
-            result.add(num_one);
-        }
-        if(count_two > nums.length / 3){
-            result.add(num_two);
-        }
-
+        if(count_a > nums.length / 3) result.add(mark_a);
+        if(count_b > nums.length / 3) result.add(mark_b);
         return result;
     }
 
