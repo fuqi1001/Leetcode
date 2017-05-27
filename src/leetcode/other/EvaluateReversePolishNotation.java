@@ -7,26 +7,27 @@ import java.util.Stack;
  */
 public class EvaluateReversePolishNotation {
     public int evalRPN(String[] tokens) {
-        if(tokens == null || tokens.length == 0) return 0;
-
         Stack<Integer> stack = new Stack<>();
-        for(String cur : tokens){
-            if(cur.equals("+")){
-                stack.push(stack.pop() + stack.pop());
-            } else if(cur.equals("-")){
-                int a = stack.pop();
-                int b = stack.pop();
-                stack.push(b-a);
-            } else if(cur.equals("*")){
-                stack.push(stack.pop() * stack.pop());
-            } else if(cur.equals("/")){
-                int a = stack.pop();
-                int b = stack.pop();
-                stack.push(b/a);
-            } else {
+        for(String cur : tokens) {
+            if( !cur.equals("+") && !cur.equals("-") && !cur.equals("*") && !cur.equals("/")) {
                 stack.push(Integer.parseInt(cur));
+            } else {
+                int num1 = stack.pop();
+                int num2 = stack.pop();
+                if(cur.equals("+")) {
+                    stack.push(num1 + num2);
+                } else if(cur.equals("-")) {
+                    stack.push(num2 - num1);
+                } else if(cur.equals("*")) {
+                    stack.push(num1 * num2);
+                } else if(cur.equals("/")) {
+                    stack.push(num2 / num1);
+                }
             }
         }
         return stack.pop();
     }
+    /*
+    remember to use equals()
+     */
 }
