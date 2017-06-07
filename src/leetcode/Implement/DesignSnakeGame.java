@@ -73,6 +73,9 @@ public class DesignSnakeGame {
             }
         }
         while(snake.size() > len + 1) snake.removeLast();
+        /*
+        蛇头移动往前加一格,如果没吃到豆,要把末尾的remove掉
+         */
         return len;
 
     }
