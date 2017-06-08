@@ -27,4 +27,10 @@ public class EncodeandDecodeStrings {
         }
         return res;
     }
+
+    /*
+    需要存一个长度的原因是,题目中给的strs是ascii 256位内的,
+    所以用#来分割的话 有可能碰到 #是一个字符串
+    所以以  长度#字符串的格式来 encode
+     */
 }
