@@ -19,5 +19,13 @@ public class RemoveKDigits {
         }
         while(sb.length() > 1 && sb.charAt(0) == '0') sb.deleteCharAt(0);
         return sb.substring(0,sb.length() - k);
+        /*
+        如果一直是递增的,
+        则在上面的for循环中没有删除任何一位
+        所以在最后要砍掉k个数字
+        因为一直是递增,
+        所以砍末尾的k位一定是得到最小值
+
+         */
     }
 }
