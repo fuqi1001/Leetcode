@@ -5,23 +5,20 @@ package leetcode.DPandBackTracking;
  */
 public class MaximumProductSubarray {
     public int maxProduct(int[] nums) {
-        if(nums == null || nums.length == 0) return 0;
+        int maxProduct = nums[0];
+        int minProduct = nums[0];
+        int res = maxProduct;
 
-        int maxP = nums[0];
-        int minP = nums[0];
-
-        int res = maxP;
-
-        for(int i = 1; i < nums.length; i++){
-            if(nums[i] >= 0){
-                maxP = Math.max(maxP * nums[i], nums[i]);
-                minP = Math.min(minP * nums[i], nums[i]);
+        for(int i = 1; i < nums.length; i++) {
+            if(nums[i] >= 0) {
+                maxProduct = Math.max(maxProduct * nums[i], nums[i]);
+                minProduct = Math.min(minProduct * nums[i], nums[i]);
             } else {
-                int temp = maxP;
-                maxP = Math.max(minP * nums[i], nums[i]);
-                minP = Math.min(temp * nums[i], nums[i]);
+                int temp = maxProduct;
+                maxProduct = Math.max(minProduct * nums[i], nums[i]);
+                minProduct = Math.min(temp * nums[i], nums[i]);
             }
-            res = Math.max(res, maxP);
+            res = Math.max(res, maxProduct);
         }
         return res;
     }
