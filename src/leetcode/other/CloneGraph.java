@@ -17,19 +17,17 @@ public class CloneGraph {
         HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
         return dfs(node, map);
     }
-
-    private UndirectedGraphNode dfs(UndirectedGraphNode node, HashMap<Integer, UndirectedGraphNode> map){
-        if(node == null) return null;
-        if(map.containsKey(node.label)){
+    public UndirectedGraphNode dfs(UndirectedGraphNode node, HashMap<Integer, UndirectedGraphNode> map) {
+        if(node == null) return node;
+        if(map.containsKey(node.label)) {
             return map.get(node.label);
         } else {
-            UndirectedGraphNode clone = new UndirectedGraphNode(node.label);
-            map.put(node.label, clone);
-            for(int i = 0; i < node.neighbors.size(); i++){
-                clone.neighbors.add(dfs(node.neighbors.get(i), map));
+            UndirectedGraphNode cloned = new UndirectedGraphNode(node.label);
+            map.put(node.label, cloned);
+            for(int i = 0; i < node.neighbors.size(); i++) {
+                cloned.neighbors.add(dfs(node.neighbors.get(i), map));
             }
-            return clone;
-
+            return cloned;
         }
     }
 }
