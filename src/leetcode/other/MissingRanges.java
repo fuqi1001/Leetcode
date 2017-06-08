@@ -28,4 +28,23 @@ public class MissingRanges {
         }
         return res;
     }
+    //
+    public List<String> findMissingRanges(int[] nums, int lower, int upper) {
+        List<String> res = new ArrayList<>();
+        for(int num : nums) {
+            if(num == Integer.MIN_VALUE) {
+                lower = num + 1;
+                continue;
+            }
+            if(num == lower + 1) res.add("" + lower);
+            else if(num - 1 > lower) res.add(lower+"->"+(num - 1));
+            if(num == Integer.MAX_VALUE) return res;
+
+            lower = num + 1;
+        }
+
+        if(lower == upper) res.add(""+lower);
+        else if(lower < upper) res.add(lower +"->" +upper);
+        return res;
+    }
 }
