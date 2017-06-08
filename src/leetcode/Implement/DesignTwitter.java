@@ -6,57 +6,58 @@ import java.util.*;
  * Created by qifu on 17/2/14.
  */
 public class DesignTwitter {
+    //keep time;
     int timeStamp = 0;
-    private Map<Integer, User> userMap;
+    Map<Integer, User> userMap;
+    //User class
+    public class User {
+        int id;
+        Set<Integer> followeed;
+        Tweet tweet_head;
 
-    public class Tweet {
-        public int id;
-        public int time;
-        public Tweet next;
-
-        public Tweet(int id){
+        public User(int id) {
             this.id = id;
-            time = timeStamp++;
+            followeed = new HashSet<>();
+            follow(id);
+            tweet_head = null;
+        }
+        public void follow(int id) {
+            followeed.add(id);
+        }
+        public void unfollow(int id) {
+            followeed.remove(id);
+        }
+        public void post(int id) {
+            Tweet new_tweet = new Tweet(id);
+            new_tweet.next = tweet_head;
+            tweet_head = new_tweet;
+        }
+    }
+
+    //Tweet class
+    public class Tweet {
+        int id;
+        int time;
+        Tweet next;
+
+        public Tweet(int id) {
+            this.id = id;
+            this.time = timeStamp++;
             next = null;
         }
     }
 
-    private class User {
-        public int id;
-        public Set<Integer> followed;   //keep follow info
-        public Tweet tweet_head;        //keep first tweet;
-
-        public User(int id) {
-            this.id = id;
-            followed = new HashSet<>();
-            follow(id);
-            tweet_head = null;
-        }
-
-        public void follow(int id){
-            followed.add(id);
-        }
-
-        public void unfollow(int id){
-            followed.remove(id);
-        }
-        public void post(int id){
-            Tweet temp = new Tweet(id);
-            temp.next = tweet_head;
-            tweet_head = temp;
-        }
-    }
 
     /** Initialize your data structure here. */
     public Twitter() {
-        userMap = new HashMap<Integer, User>();
+        userMap = new HashMap<>();
     }
 
     /** Compose a new tweet. */
     public void postTweet(int userId, int tweetId) {
-        if(!userMap.containsKey(userId)){
-            User u = new User(userId);
-            userMap.put(userId, u);
+        if(!userMap.containsKey(userId)) {
+            User new_user = new User(userId);
+            userMap.put(userId, new_user);
         }
         userMap.get(userId).post(tweetId);
     }
@@ -64,25 +65,24 @@ public class DesignTwitter {
     /** Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent. */
     public List<Integer> getNewsFeed(int userId) {
         List<Integer> res = new LinkedList<>();
-
         if(!userMap.containsKey(userId)) return res;
 
-        Set<Integer> users = userMap.get(userId).followed;
-        PriorityQueue<Tweet> queue = new PriorityQueue<Tweet>(users.size(),(a,b)->(b.time - a.time));
-        for(int user : users){
-            Tweet t = userMap.get(user).tweet_head;
-            if(t != null) {
-                queue.add(t);
+        Set<Integer> followeed_users = userMap.get(userId).followeed;
+        PriorityQueue<Tweet> queue = new PriorityQueue<>(followeed_users.size(), (a, b)->(b.time - a.time));
+        for(int cur : followeed_users) {
+            Tweet tweet = userMap.get(cur).tweet_head;
+            if(tweet != null) {
+                queue.add(tweet);
             }
         }
 
-        int n = 0;
-        while(!queue.isEmpty() && n < 10){
-            Tweet temp = queue.poll();
-            res.add(temp.id);
-            n++;
-            if(temp.next != null){
-                queue.add(temp.next);
+        int count = 0;
+        while(!queue.isEmpty() && count < 10) {
+            Tweet tweet = queue.poll();
+            res.add(tweet.id);
+            count++;
+            if(tweet.next != null) {
+                queue.add(tweet.next);
             }
         }
         return res;
@@ -90,13 +90,13 @@ public class DesignTwitter {
 
     /** Follower follows a followee. If the operation is invalid, it should be a no-op. */
     public void follow(int followerId, int followeeId) {
-        if(!userMap.containsKey(followerId)){
-            User u = new User(followerId);
-            userMap.put(followerId, u);
+        if(!userMap.containsKey(followerId)) {
+            User new_user = new User(followerId);
+            userMap.put(followerId, new_user);
         }
-        if(!userMap.containsKey(followeeId)){
-            User u = new User(followeeId);
-            userMap.put(followeeId, u);
+        if(!userMap.containsKey(followeeId)) {
+            User new_user = new User(followeeId);
+            userMap.put(followeeId, new_user);
         }
         userMap.get(followerId).follow(followeeId);
     }
