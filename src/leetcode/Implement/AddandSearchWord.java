@@ -44,4 +44,9 @@ public class AddandSearchWord {
         }
         return false;
     }
+
+    /*
+    字典树存储,碰到'.'就往下一层寻找 如果找到返回true
+
+     */
 }
