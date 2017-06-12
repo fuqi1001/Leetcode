@@ -32,4 +32,8 @@ public class RotateList {
         slow.next = null;
         return dummy.next;
     }
+    /*
+    题目要求right by k place
+    从右边起计算, 所以 i = len - k % len
+     */
 }
