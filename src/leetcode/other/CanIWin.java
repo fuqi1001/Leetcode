@@ -9,27 +9,23 @@ import java.util.Map;
 public class CanIWin {
     Map<Integer, Boolean> map;
     boolean[] used;
-
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
+        if(desiredTotal <= 0) return true;
         int sum = (1 + maxChoosableInteger) * maxChoosableInteger / 2;
         if(sum < desiredTotal) return false;
-        if(desiredTotal <= 0) return true;
 
-        map = new HashMap();
+        map = new HashMap<>();
         used = new boolean[maxChoosableInteger + 1];
         return helper(desiredTotal);
     }
-
-    private boolean helper(int target){
+    public boolean helper(int target) {
         if(target <= 0) return false;
-
         int key = format(used);
-
-        if(!map.containsKey(key)){
-            for(int i = 1; i < used.length; i++){
-                if(!used[i]){
+        if(!map.containsKey(key)) {
+            for(int i = 1; i < used.length; i++) {
+                if(!used[i]) {
                     used[i] = true;
-                    if(!helper(target - i)){
+                    if(!helper(target - i)) {
                         map.put(key, true);
                         used[i] = false;
                         return true;
@@ -41,15 +37,20 @@ public class CanIWin {
         }
         return map.get(key);
     }
-
-    private int format(boolean[] used){
-       int num = 0;
-        for(boolean cur : used){
+    public int format(boolean[] used) {
+        int num = 0;
+        for(boolean cur : used) {
             num <<= 1;
-            if(cur){
+            if(cur) {
                 num |= 1;
             }
         }
         return num;
     }
+    /*
+    format() 用于生成一个key
+    用来表示整个boolean[] used数组第几位用过第几位没用过
+    map里存这个key与true false的键值对
+    存储中间过程
+     */
 }
