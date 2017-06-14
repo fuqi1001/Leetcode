@@ -8,25 +8,20 @@ public class CompareVersionNumbers {
         String[] str1 = version1.split("\\.");
         String[] str2 = version2.split("\\.");
 
-        int i = 0;
-        while(str1.length>i || str2.length>i){
-            int value1 = 0;
-            int value2 = 0;
-
-            if(str1.length > i){
-                value1 = Integer.valueOf(str1[i]);
+        int index = 0;
+        while(str1.length > index || str2.length > index) {
+            int val1 = 0, val2 = 0;
+            if(str1.length > index) {
+                val1 = Integer.valueOf(str1[index]);
             }
-
-            if(str2.length > i){
-                value2 = Integer.valueOf(str2[i]);
+            if(str2.length > index) {
+                val2 = Integer.valueOf(str2[index]);
             }
-
-            if(value1>value2) return 1;
-            if(value1 < value2) return -1;
-            i++;
+            if(val1 > val2) return 1;
+            if(val1 < val2) return -1;
+            index++;
         }
-    return 0;
-
+        return 0;
     }
 
     ///
