@@ -10,33 +10,26 @@ import java.util.Set;
  */
 public class DecodeWays {
     public int numDecodings(String s) {
-        if(s == null || s.length() == 0)
-            return 0;
-
+        if(s == null || s.length() == 0) return 0;
         Set<String> set = new HashSet<>();
-        for(int i = 1; i <= 26; i++){
+        for(int i = 1; i <= 26; i++) {
             set.add(String.valueOf(i));
         }
-
-        Map<Integer, Integer> map = new HashMap<>();
-        return numDecode(s,0,map,set);
+        Map<Integer,Integer> map = new HashMap<>();
+        return helper(s, 0, map, set);
     }
-
-    private int numDecode(String str, int start, Map<Integer, Integer> map, Set<String> set){
-        Integer count = map.get(start);
+    public int helper(String s, int index, Map<Integer, Integer> map, Set<String> set) {
+        Integer count = map.get(index);
         if(count != null) return count;
-        if(start == str.length()) return 1;
-
+        if(index == s.length()) return 1;
         int num = 0;
-        if((start + 1 <= str.length()) && set.contains(str.substring(start, start + 1))){
-            num += numDecode(str, start + 1, map, set);
+        if((index + 1 <= s.length()) && set.contains(s.substring(index, index+1))) {
+            num += helper(s, index + 1, map, set);
         }
-        if((start + 2 <= str.length()) && set.contains(str.substring(start, start + 2))){
-            num += numDecode(str, start + 2, map, set);
+        if((index + 2 <= s.length()) && set.contains(s.substring(index, index+2))) {
+            num += helper(s, index + 2, map, set);
         }
-
-        map.put(start, num);
+        map.put(index, num);
         return num;
-
     }
 }
