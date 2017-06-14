@@ -1,5 +1,7 @@
 package leetcode.other;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeSet;
 
 /**
@@ -22,4 +24,30 @@ public class ContainsDuplicateIII {
         }
         return false;
     }
+
+    //bucket sort
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+        if(t < 0) return false;
+        long range = (long)t + 1;
+        Map<Long, Long> map = new HashMap<>();
+        for(int i = 0; i < nums.length; i++) {
+            long cur = (long)nums[i];
+            long index = getIndex(cur, range);
+            if(map.containsKey(index)) return true;
+            if(map.containsKey(index - 1) && Math.abs(nums[i] - map.get(index - 1)) < range) return true;
+            if(map.containsKey(index + 1) && Math.abs(nums[i] - map.get(index + 1)) < range) return true;
+            map.put(index, (long)nums[i]);
+            if(i >= k) {
+                map.remove(getIndex(nums[i - k], range));
+            }
+        }
+        return false;
+    }
+    public long getIndex(long num, long range) {
+        if(num < 0) return (num + 1) / range - 1;
+        else return num / range;
+    }
+
+
+
 }
