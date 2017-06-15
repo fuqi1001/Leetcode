@@ -47,4 +47,10 @@ public class SurroundedRegions {
             dfs(board, i, j + 1);
         }
     }
+
+    /*
+    important:
+    只有边界上的'O' 才进行递归,去寻找它附近的'O'
+
+     */
 }
