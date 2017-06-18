@@ -1,19 +1,25 @@
 package leetcode.other;
 
+import java.util.List;
+
 /**
  * Created by qifu on 17/6/17.
  */
 public class MaximumDistanceinArrays {
-    public int maxDistance(int[][] arrays) {
+    public int maxDistance(List<List<Integer>> arrays) {
         int res = Integer.MIN_VALUE;
-        int max = arrays[0][arrays[0].length - 1];
-        int min = arrays[0][0];
+        int max = arrays.get(0).get(arrays.get(0).size() - 1);
+        int min = arrays.get(0).get(0);
 
-        for(int i = 1; i < arrays.length; i++){
-            res = Math.max(res, Math.abs(arrays[i][0] - max));
-            res = Math.max(res, Math.abs(min - arrays[i][arrays[i].length - 1]));
-            max = Math.max(max, arrays[i][arrays[i].length - 1]);
-            min = Math.min(min, arrays[i][0]);
+        for(int i = 1; i < arrays.size(); i++) {
+            List<Integer> cur = arrays.get(i);
+            int lg = cur.get(cur.size() - 1);
+            int sm = cur.get(0);
+
+            res = Math.max(res, Math.abs(min - lg));
+            res = Math.max(res, Math.abs(sm - max));
+            max = Math.max(max, cur.get(cur.size() - 1));
+            min = Math.min(min, cur.get(0));
         }
         return res;
     }
