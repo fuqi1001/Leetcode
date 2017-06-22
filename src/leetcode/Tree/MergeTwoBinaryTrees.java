@@ -4,6 +4,7 @@ package leetcode.Tree;
  * Created by qifu on 17/6/11.
  */
 public class MergeTwoBinaryTrees {
+    //directly recursive
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
         if(t1 == null) return t2;
         if(t2 == null) return t1;
