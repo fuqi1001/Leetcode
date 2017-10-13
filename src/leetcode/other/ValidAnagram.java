@@ -10,6 +10,31 @@ import java.util.HashSet;
  * Created by qifu on 16/8/19.
  */
 public class ValidAnagram {
+
+    // best
+    public boolean isAnagram(String s, String t) {
+        if(s == null || t == null)
+            return false;
+        if(s.length() != t.length())
+            return false;
+        char[] ss = s.toCharArray();
+        char[] ts = t.toCharArray();
+        //one 'char' type takes 8bits. 256 char values at most.
+        int[] srecord = new int[256];
+        int[] trecord = new int[256];
+        int len = s.length();
+        for(int i = 0; i < len; ++i){
+            srecord[ss[i]] ++;
+            trecord[ts[i]] ++;
+        }
+        for(int i = 0; i <  256; ++i){
+            if(srecord[i] != trecord[i])
+                return false;
+        }
+        return true;
+    }
+
+
     public boolean isAnagram(String s, String t) {
 
         HashMap<Character,Integer> set1 = new HashMap();
@@ -71,25 +96,19 @@ public class ValidAnagram {
         }
         return true;
     }
-        // best
+
+
+    //
     public boolean isAnagram(String s, String t) {
-        if(s == null || t == null)
-            return false;
-        if(s.length() != t.length())
-            return false;
-        char[] ss = s.toCharArray();
-        char[] ts = t.toCharArray();
-        //one 'char' type takes 8bits. 256 char values at most.
-        int[] srecord = new int[256];
-        int[] trecord = new int[256];
-        int len = s.length();
-        for(int i = 0; i < len; ++i){
-            srecord[ss[i]] ++;
-            trecord[ts[i]] ++;
+        if(s.length() != t.length()) return false;
+        int[] num = new int[26];
+        for(int i = 0; i < s.length(); i++){
+            num[s.charAt(i) - 'a']++;
+            num[t.charAt(i) - 'a']--;
         }
-        for(int i = 0; i <  256; ++i){
-            if(srecord[i] != trecord[i])
-                return false;
+
+        for(int i = 0; i < 26; i++) {
+            if(num[i] != 0) return false;
         }
         return true;
     }
