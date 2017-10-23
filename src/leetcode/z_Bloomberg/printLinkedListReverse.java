@@ -1,6 +1,6 @@
 package leetcode.z_Bloomberg;
 
-public class printReverse {
+public class printLinkedListReverse {
     static Node head = new Node(0);
     static Node cur = head;
 
@@ -23,7 +23,7 @@ public class printReverse {
         System.out.println(head.data);
     }
     public static void main(String[] args) {
-        printReverse t = new printReverse();
+        printLinkedListReverse t = new printLinkedListReverse();
         t.push(1);
         t.push(2);
         t.push(3);
