@@ -3,13 +3,14 @@ package leetcode.other;
 /**
  * Created by qifu on 16/8/30.
  */
-class ListNode {
-         int val;
-         ListNode next;
-         ListNode(int x) { val = x; }
-}
+
 //iterative solution
 public class ReverseLinkedList {
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
     public ListNode reverseList(ListNode head) {
         if(head == null) return head;
         ListNode prev = null;
