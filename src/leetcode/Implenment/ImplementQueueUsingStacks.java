@@ -16,9 +16,9 @@ public class ImplementQueueUsingStacks {
     }
 
     // Removes the element from in front of queue.
-    public void pop() {
+    public int pop() {
         peek();
-        output.pop();
+        return output.pop();
     }
 
     // Get the front element.
