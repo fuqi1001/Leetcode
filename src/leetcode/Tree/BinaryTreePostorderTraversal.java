@@ -20,6 +20,40 @@ public class BinaryTreePostorderTraversal {
         list.add(node.val);
     }
 
+
+
+    //
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if(root == null) return res;
+        Stack<TreeNode> stack1 = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
+
+        TreeNode node = root;
+        stack1.push(node);
+        while(!stack1.isEmpty()) {
+            TreeNode cur = stack1.pop();
+            stack2.push(cur);
+            if(cur.left != null) stack1.push(cur.left);
+            if(cur.right != null) stack1.push(cur.right);
+        }
+        while(!stack2.isEmpty()) {
+            res.add(stack2.pop().val);
+        }
+        return res;
+    }
+
+    /**
+     * 后续遍历 左->右->中
+     * 中->右->左
+     * 然后用另一个stack 倒转一次
+     * @param root
+     * @return
+     */
+
+
+
+    //
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
 
