@@ -20,18 +20,32 @@ public class BinaryTreePostorderTraversal {
         list.add(node.val);
     }
 
-    public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+
         Stack<TreeNode> stack = new Stack<>();
-        if(root == null) return list;
-        stack.push(root);
-        while(!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-            list.add(node.val);
-            if(node.right != null) stack.push(node.right);
-            if(node.left != null) stack.push(node.left);
+
+        TreeNode node = root;
+        TreeNode lastVisit = null;
+        while(node!=null || !stack.isEmpty()){
+            while(node != null){
+                stack.push(node);
+                node = node.left;
+            }
+
+            node = stack.peek();
+
+            if(node.right == null || node.right == lastVisit){
+                result.add(node.val);
+                lastVisit = node;
+                stack.pop();
+                node = null;
+            }
+            else{
+                node = node.right;
+            }
         }
-        return list;
+        return result;
     }
 
 }
