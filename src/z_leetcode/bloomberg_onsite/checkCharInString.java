@@ -12,7 +12,6 @@ public class checkCharInString {
                 list.add(i);
             }
         }
-
         if(list.size() == 0) return res;
         int index = 0;
         int cur = list.get(index);
