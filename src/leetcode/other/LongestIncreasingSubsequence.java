@@ -43,6 +43,38 @@ public class LongestIncreasingSubsequence {
         }
         return size;
     }
+    //O(logn)
+    public int lengthOfLIS(int[] nums) {
+        if(nums.length == 0) return 0;
+        int size = 0;
+        int[] tails = new int[nums.length];
+        tails[0] = nums[0];
 
+        for(int i = 1; i < nums.length; i++) {
+            if(nums[i] < tails[0]) {
+                tails[0] = nums[i];
+            } else if(nums[i] > tails[size]) {
+                tails[++size] = nums[i];
+            } else {
+                tails[bs(tails, 0, size, nums[i])] = nums[i];
+            }
+        }
+        return size + 1;
+    }
+    public int bs(int[] tails, int left, int right, int target) {
+        while(left <= right) {
+            int mid = left + (right - left) / 2;
+            if(tails[mid] == target) {
+                return mid;
+            }
+            if(tails[mid] < target) {
+                left = mid + 1;
+            }
+            if(tails[mid] > target) {
+                right = mid - 1;
+            }
+        }
+        return left;
+    }
 
 }
