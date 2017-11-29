@@ -1,6 +1,13 @@
 package z_leetcode.bloomberg_onsite;
 
 public class FindNumber {
+    /**
+     * 给一个先降序再升序的数组和一个target，返回这个这个数是否在数组中。Follow up：如果数字有重复怎么办
+     * @param nums
+     * @param left
+     * @param right
+     * @return
+     */
     public int findPeak(int[] nums, int left, int right) {
         if(nums.length <= 2){
              return -1;
