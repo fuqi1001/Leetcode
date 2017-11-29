@@ -53,22 +53,50 @@ public class FlattenBinaryTreetoLinkedList {
         if(root == null) return;
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
-
-        while(!stack.isEmpty()){
-            TreeNode node = stack.pop();
-            if(node.right != null){
-                stack.add(node.right);
+        while(!stack.isEmpty()) {
+            TreeNode cur = stack.pop();
+            if(cur.left != null) {
+                TreeNode p = cur.left;
+                while(p.right != null) {
+                    p = p.right;
+                }
+                p.right = cur.right;
+                cur.right = cur.left;
+                cur.left = null;
             }
-            if(node.left != null){
-                stack.add(node.left);
-            }
-
-            node.left = null;
-            if(stack.empty()){
-                node.right = null;
-            }else{
-                node.right = stack.peek();
-            }
+            if(cur.right != null) stack.push(cur.right);
         }
+    }
+
+    //
+    public void flatten(TreeNode root) {
+        TreeNode move = root;
+        while(move != null) {
+            if(move.left != null) {
+                TreeNode p = move.left;
+                while(p.right != null) {
+                    p = p.right;
+                }
+                p.right = move.right;
+                move.right = move.left;
+                move.left = null;
+            }
+            move = move.right;
+        }
+    }
+
+    //
+    public void flatten(TreeNode root) {
+        if(root == null) return;
+        if(root.left != null) flatten(root.left);
+        if(root.right != null) flatten(root.right);
+
+        TreeNode temp = root.right;
+        root.right = root.left;
+        root.left = null;
+        while(root.right != null) {
+            root = root.right;
+        }
+        root.right = temp;
     }
 }
