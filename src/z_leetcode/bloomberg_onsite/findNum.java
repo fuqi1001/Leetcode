@@ -28,6 +28,7 @@ public class findNum {
             }
         }
 
+
         for(Map.Entry<Integer, List<Integer>> entry : map.entrySet()) {
             List<Integer> list = entry.getValue();
             for(int i = 0; i < list.size() ;i++) {
