@@ -7,25 +7,15 @@ import java.util.Arrays;
  */
 public class LongestPalindromicSubstring {
     public String longestPalindrome(String s) {
-        if(s.length() == 0) return s;
-
-        int len = s.length();
-        int dp[][] = new int[len][len];
-        for(int i = 0 ; i < len ; i++){
-            for(int j = 0 ; j < len ; j++){
-                dp[i][j] = 0;
-            }
-        }
-
-        int maxLen = 0;
-        int start = 0;
-        int end = 0;
-        for(int i = 0 ; i < len ; i++){
-            for(int j = 0 ; j < i ;j++){
-                if(s.charAt(j) == s.charAt(i) && (i-j < 2 || dp[j+1][i-1] == 1)){
+        if(s == null || s.length() <= 1) return s;
+        int maxLen = 0, start = 0, end = 0, len = s.length();
+        int[][] dp = new int[len][len];
+        for(int i = 0; i < len; i++) {
+            for(int j = 0; j < i; j++) {
+                if(s.charAt(i) == s.charAt(j) && (i - j < 2 || dp[j+1][i-1] == 1)) {
                     dp[j][i] = 1;
                 }
-                if(dp[j][i]==1 && (maxLen < i - j + 1)){
+                if(dp[j][i] == 1 && maxLen < i - j + 1) {
                     maxLen = i - j + 1;
                     start = j;
                     end = i;
@@ -33,7 +23,7 @@ public class LongestPalindromicSubstring {
             }
             dp[i][i] = 1;
         }
-        return s.substring(start,end+1);
+        return s.substring(start, end + 1);
     }
 
 
