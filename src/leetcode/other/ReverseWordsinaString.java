@@ -54,4 +54,33 @@ public class ReverseWordsinaString {
         }
         return sb.length() == 0 ? "" : sb.substring(0, sb.length() - 1);
     }
+
+
+    //
+    public String reverseWords(String s) {
+        if(s.length() < 1) return s;
+        int startIndex = 0;
+        char[] str = s.toCharArray();
+        reverse(str, 0, str.length - 1);
+        for(int i = 0; i < str.length; i++) {
+            if(str[i] != ' '){
+                if(startIndex != 0) str[startIndex++] = ' ';
+                int j = i;
+                while(j < str.length && str[j] != ' ') {
+                    str[startIndex++] = str[j++];
+                }
+                reverse(str, startIndex - (j - i), startIndex - 1);
+                i = j;
+            }
+        }
+        return new String(str, 0, startIndex);
+    }
+
+    private void reverse(char[] ctr, int start, int end) {
+        for(; start < end; start++, end--) {
+            char temp = ctr[start];
+            ctr[start] = ctr[end];
+            ctr[end] = temp;
+        }
+    }
 }
