@@ -1,7 +1,5 @@
 package leetcode.other;
 
-import java.util.List;
-
 /**
  * Created by qifu on 17/2/13.
  */
@@ -29,21 +27,5 @@ public class WordSearch {
                 ||helper(board, x, y - 1, words, i + 1);
         board[x][y] ^= 256;
         return res;
-    }
-
-
-    //
-    public boolean wordBreak(String s, List<String> wordDict) {
-        boolean[] check = new boolean[s.length() + 1];
-        check[0] = true;
-        for(int i = 1; i <= s.length() ; i++) {
-            for(int j = i - 1; j >= 0; j--) {
-                if(check[j] && wordDict.contains(s.substring(j, i))) {
-                    check[i] = true;
-                    break;
-                }
-            }
-        }
-        return check[s.length()];
     }
 }
