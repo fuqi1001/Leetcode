@@ -30,6 +30,9 @@ public class WordBreak {
         return false;
     }
 
+
+
+    //
     public boolean wordBreak(String s, Set<String> dict) {
         boolean[] f = new boolean[s.length() + 1];
         f[0] = true;
