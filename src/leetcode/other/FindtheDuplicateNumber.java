@@ -5,24 +5,19 @@ package leetcode.other;
  */
 public class FindtheDuplicateNumber {
     public int findDuplicate(int[] nums) {
-        int min = 0;
-        int max = nums.length - 1;
-
-        while(min <= max){
-            int mid = min + (max - min) / 2;
+        int left = 0, right = nums.length - 1;
+        while(left <= right) {
+            int mid = left + (right - left) / 2;
             int count = 0;
-            for(int i = 0; i < nums.length; i++){
-                if(nums[i] <= mid){
+            for(int i = 0; i < nums.length; i++) {
+                if(nums[i] <= mid) {
                     count++;
                 }
             }
-            if(count > mid) {
-                max = mid - 1;
-            } else {
-                min = mid + 1;
-            }
+            if(count > mid) right = mid - 1;
+            else left = mid + 1;
         }
-        return min;
+        return left;
     }
 
     //https://segmentfault.com/a/1190000003817671
