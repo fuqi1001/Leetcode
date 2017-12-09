@@ -7,9 +7,10 @@ import java.util.Arrays;
  */
 public class LongestPalindromicSubstring {
     public String longestPalindrome(String s) {
-        if(s == null || s.length() <= 1) return s;
-        int maxLen = 0, start = 0, end = 0, len = s.length();
+        if(s == null || s.length() == 0) return s;
+        int len = s.length();
         int[][] dp = new int[len][len];
+        int maxLen = 0, start = 0, end = 0;
         for(int i = 0; i < len; i++) {
             for(int j = 0; j < i; j++) {
                 if(s.charAt(i) == s.charAt(j) && (i - j < 2 || dp[j+1][i-1] == 1)) {
