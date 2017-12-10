@@ -15,7 +15,7 @@ public class Hindex {
         }
 
         for(int i = n ; i > 0 ;i--){
-            if(map[i] > i) return i;
+            if(map[i] >= i) return i;
             map[i - 1] += map[i];
         }
         return 0;
