@@ -1,4 +1,4 @@
-# LeetCode 
+# LeetCode
 | # | Title | Solution | Difficulty |
 |---| ----- | -------- | ---------- |
 |461|[Hamming Distance](https://leetcode.com/problems/hamming-distance/description/) | [Java](./src/leetcode/bit/HammingDistance.java)|Easy|
