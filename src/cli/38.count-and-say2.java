@@ -1,0 +1,24 @@
+class Solution {
+    public String countAndSay(int n) {
+        if (n == 1) return "1";
+	String last = countAndSay(n-1);
+	return getNextString(last);
+    }
+    private String getNextString(String str) {
+	if (str.length() == 0) return "";
+	int num = getDupChar(str);
+	return num + "" + str.charAt(0) + getNextString(str.substring(num));
+    }
+    private int getDupChar(String str) {
+	int count = 1;
+	char c = str.charAt(0);
+	int index = 1;
+	while(index < str.length()) {
+	    if (str.charAt(index) == c) {
+		count++;
+		index++;
+	    } else break;
+	}
+	return count;
+    }
+}
