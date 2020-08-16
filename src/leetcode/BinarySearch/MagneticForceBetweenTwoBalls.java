@@ -32,7 +32,7 @@ public class MagneticForceBetweenTwoBalls {
         return right;
     }
 
-    public int countCanFit(int[] position, int distance) {
+    private int countCanFit(int[] position, int distance) {
         int prevIdx = 0;
         int count = 0;
         for(int i = 1; i < position.length; i++) {

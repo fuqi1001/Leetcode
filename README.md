@@ -20,3 +20,5 @@
 |657|[Judge Route Circle](https://leetcode.com/problems/judge-route-circle/description/) | [Java](./src/leetcode/other/JudgeRouteCircle.java)|Easy|
 |658|[Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/description/) | [Java](./src/leetcode/other/FindKClosestElements.java)|Medium|
 |1546|[Maximum Number of Non-Overlapping Subarrays With Sum Equals Target](https://leetcode.com/contest/weekly-contest-201/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/)|[Java](https://github.com/fuqi1001/Leetcode/blob/master/src/leetcode/DPandBackTracking/MaxNoOverlapping.java)|Medium
+|1551|[Minimum Operations to Make Array Equal](https://leetcode.com/problems/minimum-operations-to-make-array-equal/)|[Java](https://github.com/fuqi1001/Leetcode/blob/master/src/leetcode/Array/MinimumOperationsToMakeArrayEqual.java)|Medium
+|1552|[Magnetic Force Between Two Balls](https://leetcode.com/problems/magnetic-force-between-two-balls/)|[Java](https://github.com/fuqi1001/Leetcode/blob/master/src/leetcode/BinarySearch/MagneticForceBetweenTwoBalls.java)|Medium
