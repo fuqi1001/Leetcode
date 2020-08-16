@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e2ad4c7-89ae-43b0-a416-049782905c27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/leetcode/DPandBackTracking/MaxNoOverlapping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/leetcode/z_rot/BeauifulSubarray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/leetcode/z_rot/BreakPalindrome.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/leetcode/z_rot/ConsecutiveNumberSum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/leetcode/z_rot/LastSubstringInLexi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/leetcode/BinarySearch/MagneticForceBetweenTwoBalls.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,14 +16,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/leetcode/DPandBackTracking/MaxNoOverlapping.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="513">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/leetcode/BinarySearch/MagneticForceBetweenTwoBalls.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="928">
+              <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -38,7 +42,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="504">
-                <caret line="21" selection-start-line="21" selection-end-line="21" />
+                <caret line="21" column="309" selection-start-line="21" selection-start-column="309" selection-end-line="21" selection-end-column="309" />
               </first_editor>
               <second_editor />
             </state>
@@ -84,14 +88,15 @@
         <option value="$PROJECT_DIR$/src/leetcode/z_rot/LastSubstringInLexi.java" />
         <option value="$PROJECT_DIR$/src/leetcode/DPandBackTracking/MaxNoOverlapping.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/leetcode/BinarySearch/MagneticForceBetweenTwoBalls.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-47" />
-    <option name="y" value="31" />
-    <option name="width" value="2560" />
-    <option name="height" value="1368" />
+    <option name="x" value="366" />
+    <option name="y" value="88" />
+    <option name="width" value="2058" />
+    <option name="height" value="1302" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -101,6 +106,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -124,14 +130,20 @@
               <item name="Leetcode" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="leetcode" type="462c0819:PsiDirectoryNode" />
-              <item name="DPandBackTracking" type="462c0819:PsiDirectoryNode" />
+              <item name="BinarySearch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Leetcode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Leetcode" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
+              <item name="bit" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -186,17 +198,19 @@
       <workItem from="1583723172411" duration="5916000" />
       <workItem from="1585500326023" duration="5834000" />
       <workItem from="1589338837627" duration="5820000" />
-      <workItem from="1596946924653" duration="942000" />
+      <workItem from="1596946924653" duration="1615000" />
+      <workItem from="1597553841477" duration="284000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32064000" />
+    <option name="totallyTimeSpent" value="33021000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-47" y="31" width="2560" height="1368" extended-state="0" />
+    <frame x="366" y="88" width="2058" height="1302" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.117156476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14781746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -211,7 +225,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.22257054" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.23471074" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -424,7 +438,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="504">
-            <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <caret line="21" column="309" selection-start-line="21" selection-start-column="309" selection-end-line="21" selection-end-column="309" />
           </first_editor>
           <second_editor />
         </state>
@@ -432,11 +446,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/leetcode/DPandBackTracking/MaxNoOverlapping.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="513">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/leetcode/BinarySearch/MagneticForceBetweenTwoBalls.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="928">
+          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
         </state>
       </provider>
     </entry>
